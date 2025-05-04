@@ -1,6 +1,7 @@
 import { Squircle } from "@squircle-js/react";
 import { ArchiveRestore, Droplets, Flame, MapPinned, Truck } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -26,7 +27,7 @@ export default function Home() {
             <br />
             Contribuimos para a preservação do meio ambiente e transformamos resíduos em novas oportunidades. 
           </p>
-          <a href="/">
+          <Link href="/">
             <Squircle
               cornerRadius={8}
               cornerSmoothing={1}
@@ -34,7 +35,7 @@ export default function Home() {
               >
               Seja Parceiro
             </Squircle>
-          </a>
+          </Link>
         </div>
       </section>
       <section className="flex items-center justify-center w-full h-80 bg-zinc-100">

@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 interface Todos {
     userId: number,
@@ -19,8 +20,8 @@ export default async function PointList() {
                         <p className="text-sm text-zinc-500">Telefone: (00) 00000-0000</p>
                     </div>
                     <div className="flex flex-row items-center justify-between w-full">
-                        <a href="/" className="text-sm text-green-500 hover:text-green-400 transition-all duration-200">Ver no Mapa</a>
-                        <a href="/" className="text-sm text-green-500 hover:text-green-400 transition-all duration-200">Enviar Mensagem</a>
+                        <Link href="/" className="text-sm text-green-500 hover:text-green-400 transition-all duration-200">Ver no Mapa</Link>
+                        <Link href="/" className="text-sm text-green-500 hover:text-green-400 transition-all duration-200">Enviar Mensagem</Link>
                     </div>  
                 </div>
             ))}
