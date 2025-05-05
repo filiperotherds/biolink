@@ -12,7 +12,8 @@ export default function Header() {
                             <Image
                                 src="/extended_logo.png"
                                 alt="Logo"
-                                className="h-7 w-auto"
+                                width={112}
+                                height={28}
                             />
                         </Link>
                     </div>
@@ -33,7 +34,7 @@ export default function Header() {
                         </div>
                         <div className="flex flex-row items-center gap-4">
                             <Link href="/" className="text-sm font-bold text-zinc-700 hover:text-zinc-500 transition-all duration-200">Seja Parceiro</Link>
-                            <Link href="/">
+                            <Link href="/login">
                                 <Squircle
                                     cornerRadius={8}
                                     cornerSmoothing={1}
