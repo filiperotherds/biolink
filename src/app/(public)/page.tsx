@@ -5,40 +5,40 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center w-full mx-auto">
-      <section className="flex flex-row items-center justify-center w-full max-w-[980px] h-[calc(100vh-64px)]">
-        <div className="flex-1/2 flex flex-col items-start justify-start">
-          <div className="flex w-full h-[500px] justify-start items-start relative">
-            <Image 
-              src={'/character_1.png'} 
-              alt="BioLink Character"
-              fill
-              style={{ objectFit: 'contain', objectPosition: 'left' }}
-              priority
-            />
-          </div>
-        </div>
+    <main className="flex flex-col items-center justify-center w-full mx-auto bg-secondary pt-16">
+      <section className="flex flex-row items-center justify-center w-4/5 h-[calc(100vh-64px)] gap-8">
         <div className="flex-1/2 flex flex-col items-start justify-center gap-8">
-          <p className="text-4xl font-extrabold text-start text-zinc-800">
-            Transformando Óleo Vegetal em Oportunidades.
-          </p>
-          <p className="text-sm font-semibold text-start text-zinc-400">
-            Realizamos a gestão do ciclo de vida do óleo vegetal usado, com a disponibilização de recipientes para armazenamento do resíduo, coleta agendada e tratamento do material.
+            <p className="text-7xl font-black text-start text-zinc-800 leading-tight">
+            Do Óleo Vegetal
             <br />
-            Contribuimos para a preservação do meio ambiente e transformamos resíduos em novas oportunidades. 
+            ao Biodiesel.
+            </p>
+          <p className="text-sm font-semibold text-start text-zinc-600">
+            Armazenamento, coleta, tratamento e entrega do material na usina. Garantimos a gestão do ciclo de vida completo do óleo vegetal usado, contribuindo para a preservação do meio ambiente e transformando resíduos em oportunidades. 
           </p>
           <Link href="/">
             <Squircle
               cornerRadius={8}
               cornerSmoothing={1}
-              className="flex items-center justify-center px-6 h-12 bg-green-500 text-white font-bold hover:bg-green-300 transition-all duration-200"
+              className="flex items-center justify-center px-6 h-12 bg-green text-white font-bold hover:bg-light-green transition-all duration-200"
               >
               Seja Parceiro
             </Squircle>
           </Link>
         </div>
+        <div className="flex-1/2 flex flex-col items-center justify-center">
+          <div className="flex w-full h-[420px] justify-center items-center relative">
+            <Image 
+              src={'/gas_base.png'} 
+              alt="BioLink Gas"
+              fill
+              style={{ objectFit: 'contain', objectPosition: 'right' }}
+              priority
+            />
+          </div>
+        </div>
       </section>
-      <section className="flex items-center justify-center w-full h-80 bg-zinc-100">
+      <section className="flex items-center justify-center w-full h-80 bg-white">
         <div className="flex flex-row items-start justify-between w-full max-w-[980px] py-12 gap-12">
           <div className="flex flex-col items-center justify-start w-64 gap-2">
             <MapPinned size={48} color="#3f3f46"/>
@@ -72,7 +72,7 @@ export default function Home() {
               <Squircle
                 cornerRadius={12}
                 cornerSmoothing={1}
-                className="flex items-center justify-center w-12 h-12 bg-green-500 text-white font-bold hover:bg-green-300 transition-all duration-200"
+                className="flex items-center justify-center w-12 h-12 bg-green text-white font-bold hover:bg-light-green transition-all duration-200"
               >
                 <Droplets/>
               </Squircle>
@@ -90,7 +90,7 @@ export default function Home() {
               <Squircle
                 cornerRadius={12}
                 cornerSmoothing={1}
-                className="flex items-center justify-center w-12 h-12 bg-green-500 text-white font-bold hover:bg-green-300 transition-all duration-200"
+                className="flex items-center justify-center w-12 h-12 bg-green text-white font-bold hover:bg-light-green transition-all duration-200"
               >
                 <Flame/>
               </Squircle>

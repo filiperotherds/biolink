@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Login() {
     return (
-        <main className="flex items-center justify-center w-screen h-screen bg-zinc-100">
+        <main className="flex items-center justify-center w-screen h-screen bg-secondary">
             <div className="flex flex-row items-center justify-center w-[720px] h-[460px] bg-white rounded-2xl shadow-lg">
                 <div className="flex-1/2 flex flex-col items-center justify-between h-full p-8">
                     <div className="flex flex-col items-center justify-center w-full">
@@ -68,7 +68,7 @@ export default function Login() {
                         <div className="w-full flex justify-end">
                             <Link href={'/'}>
                                 <Image
-                                    src={'/extended_logo_gray.png'}
+                                    src={'/extended_logo.png'}
                                     alt="Logo"
                                     width={112}
                                     height={28}

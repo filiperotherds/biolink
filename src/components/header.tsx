@@ -6,7 +6,7 @@ export default function Header() {
     return (
         <header className="fixed top-0 left-0 right-0 w-full h-16 z-50 backdrop-blur-sm">
             <div className="flex w-full h-full items-center justify-center">
-                <div className="flex flex-row items-center justify-between h-full w-full max-w-[980px]">
+                <div className="flex flex-row items-center justify-between h-full w-4/5">
                     <div className="flex flex-row items-center h-full gap-16">
                         <Link href="/" className="flex items-center h-full">
                             <Image
@@ -38,7 +38,7 @@ export default function Header() {
                                 <Squircle
                                     cornerRadius={8}
                                     cornerSmoothing={1}
-                                    className="flex items-center justify-center px-3 h-7 bg-green-500 text-white font-bold text-[13px] hover:bg-green-300 transition-all duration-200">
+                                    className="flex items-center justify-center px-3 h-7 bg-[#76b061] text-white font-bold text-[13px] hover:bg-[#8bbc7a] transition-all duration-200">
                                     Acessar Painel
                                 </Squircle>
                             </Link>
