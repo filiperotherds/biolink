@@ -33,7 +33,7 @@ export default function Header() {
                             </Link>
                         </div>
                         <div className="flex flex-row items-center gap-4">
-                            <Link href="/" className="text-sm font-bold text-zinc-700 hover:text-zinc-500 transition-all duration-200">Seja Parceiro</Link>
+                            <Link href="/seja-parceiro" className="text-sm font-bold text-zinc-700 hover:text-zinc-500 transition-all duration-200">Seja Parceiro</Link>
                             <Link href="/login">
                                 <Squircle
                                     cornerRadius={8}

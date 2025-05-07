@@ -44,7 +44,7 @@ export default function Footer() {
             <div className="flex flex-row items-center justify-between h-16 w-full max-w-[980px] border-t border-zinc-300">
                 <p className="text-sm font-semibold text-zinc-500">© 2025 BioLink Eco. Todos os direitos reservados.</p>
                 <div className="flex flex-row items-center justify-end gap-4">
-                    <Link target="_blank" href="https://instagram.com/biolink.org">
+                    <Link target="_blank" href="https://instagram.com/biolink.eco">
                         <Instagram
                             color="#71717a"
                         />
