@@ -42,7 +42,7 @@ export function SiteHeader() {
           <nav className="hidden md:flex items-center gap-6 relative">
             {/* Features Menu */}
             <div className="relative" onMouseEnter={() => handleMouseEnter("features")} onMouseLeave={handleMouseLeave}>
-              <button className="flex items-center gap-1 text-sm font-medium hover:text-primary">
+              <button className="flex items-center gap-1 text-sm font-medium hover:text-primary cursor-pointer">
                 Features{" "}
                 <ChevronDown
                   className={`h-4 w-4 transition-transform ${activeMenu === "features" ? "rotate-180" : ""}`}
