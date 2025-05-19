@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "../globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
   title: "BioLink - Conectando a Produção de Biodiesel",
-  description: "Facilitando a Logística Reversa de Óleo Vegetal Usado"
+  description: "Facilitando a Logística Reversa de Óleo Vegetal Usado",
 };
 
 export default function RootLayout({
@@ -21,12 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body
-        className={`${inter.variable} antialiased`}
-      >
-        <Header/>
+      <body className={`${GeistSans.className} antialiased`}>
+        <Header />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
