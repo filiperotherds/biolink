@@ -1,8 +1,8 @@
-import Image from "next/image"
-import Link from "next/link"
-import { SiteHeader } from "@/components/site-header"
-import { ThemeSection } from "@/components/theme-section"
-import { InteractiveProductView } from "@/components/interactive-product-view"
+import Image from "next/image";
+import Link from "next/link";
+import { SiteHeader } from "@/components/site-header";
+import { ThemeSection } from "@/components/theme-section";
+import { InteractiveProductView } from "@/components/interactive-product-view";
 
 export default function Home() {
   return (
@@ -11,9 +11,12 @@ export default function Home() {
       <main className="min-h-screen flex flex-col items-center relative overflow-hidden">
         {/* Hero Section */}
         <section className="w-full max-w-5xl mx-auto px-4 pt-32 pb-12 text-center relative z-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">Streamline Your Workflow</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
+            Streamline Your Workflow
+          </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            The all-in-one platform that helps teams build better products, faster.
+            The all-in-one platform that helps teams build better products,
+            faster.
           </p>
           <Link
             href="#get-started"
@@ -47,10 +50,15 @@ export default function Home() {
         {/* Partners Section */}
         <section className="w-full bg-zinc-100 py-24 relative z-10">
           <div className="max-w-5xl mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12">Trusted by innovative teams worldwide</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-12">
+              Trusted by innovative teams worldwide
+            </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="h-16 bg-white/80 rounded-md flex items-center justify-center shadow-sm">
+                <div
+                  key={i}
+                  className="h-16 bg-white/80 rounded-md flex items-center justify-center shadow-sm"
+                >
                   <span className="text-muted-foreground">Logo {i}</span>
                 </div>
               ))}
@@ -72,7 +80,10 @@ export default function Home() {
               style={{ fill: "#ffffff" }}
             ></path>
           </svg>
-          <div className="absolute inset-0 bg-zinc-100" style={{ zIndex: -1 }}></div>
+          <div
+            className="absolute inset-0 bg-zinc-100"
+            style={{ zIndex: -1 }}
+          ></div>
         </div>
 
         {/* Theme Section */}
@@ -82,5 +93,5 @@ export default function Home() {
         <InteractiveProductView />
       </main>
     </>
-  )
+  );
 }
