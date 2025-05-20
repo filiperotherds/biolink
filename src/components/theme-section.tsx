@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer"
 
 export function ThemeSection() {
   const { ref, inView } = useInView({
-    threshold: 0.2,
+    threshold: 0.5,
     triggerOnce: false,
   })
 

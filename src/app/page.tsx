@@ -1,13 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SiteHeader } from "@/components/site-header";
 import { ThemeSection } from "@/components/theme-section";
 import { InteractiveProductView } from "@/components/interactive-product-view";
 
 export default function Home() {
   return (
     <>
-      <SiteHeader />
+      {/*<SiteHeader />*/}
       <main className="min-h-screen flex flex-col items-center relative overflow-hidden">
         {/* Hero Section */}
         <section className="w-full max-w-5xl mx-auto px-4 pt-32 pb-12 text-center relative z-10">
