@@ -4,9 +4,9 @@ import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SaaSPro - Streamline Your Workflow",
+  title: "BioLink - Do Óleo Vegetal ao Biodiesel",
   description:
-    "The all-in-one platform that helps teams build better products, faster.",
+    "Coleta de Óleo Vegetal Usado.",
 };
 
 export default function RootLayout({
