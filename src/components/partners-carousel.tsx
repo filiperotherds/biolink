@@ -5,7 +5,7 @@ import Logo3 from "./logos/logo-3";
 
 export function PartnersCarousel() {
   return (
-    <div className="w-full bg-white py-12 px-4">
+    <div className="w-full max-w-5xl bg-white py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="relative overflow-hidden">
           {/* Left fade gradient */}
@@ -73,8 +73,8 @@ export function PartnersCarousel() {
           `}</style>
         </div>
         <div className="text-center mt-8">
-          <p className="text-gray-400 text-sm">
-            Trusted by fast-growing companies worldwide
+          <p className="text-gray-400 text-md">
+            Confiado por empresas responsáveis no Brasil.
           </p>
         </div>
       </div>
