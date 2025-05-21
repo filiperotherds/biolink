@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ThemeSection } from "@/components/theme-section";
 import { InteractiveProductView } from "@/components/interactive-product-view";
 import { Header } from "@/components/header";
+import { PartnersCarousel } from "@/components/partners-carousel";
 
 export default function Home() {
   return (
@@ -10,20 +11,23 @@ export default function Home() {
       <Header />
       <main className="min-h-screen flex flex-col items-center relative overflow-hidden">
         {/* Hero Section */}
-        <section className="w-full max-w-5xl mx-auto px-4 pt-32 pb-12 text-center relative z-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-            Do Óleo Vegetal ao Biodiesel
+        <section className="w-full max-w-5xl mx-auto px-4 pt-40 pb-12 text-center relative z-10">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8">
+            Gestão inteligente e sustentável para óleo usado
           </h1>
           <p className="text-xl md:text-xl font-light text-muted-foreground max-w-2xl mx-auto mb-8">
-            Simplificamos o processo de coleta e reciclagem de óleo usado. Sua empresa em dia, sem complicação e sem custos.
+            Simplificamos o processo de coleta e reciclagem de óleo usado. Sua empresa em dia, sem complicações e sem custos.
           </p>
           <Link
             href="/cadastro"
-            className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-8 text-lg font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
+            className="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-6 text-md font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
           >
             Cadastre-se
           </Link>
         </section>
+
+        {/* Partners Section */}
+        <PartnersCarousel/>
 
         {/* Image Section with Semi-circle Background */}
         <section className="w-full relative">
@@ -43,25 +47,6 @@ export default function Home() {
           {/* Subtle transition to partners section */}
           <div className="h-16">
             <div className="w-full h-full"></div>
-          </div>
-        </section>
-
-        {/* Partners Section */}
-        <section className="w-full bg-zinc-100 py-12 relative z-10">
-          <div className="max-w-5xl mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12">
-              Empresas apoiadoras do projeto
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="h-16 bg-white/80 rounded-md flex items-center justify-center shadow-sm"
-                >
-                  <span className="text-muted-foreground">Logo {i}</span>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
