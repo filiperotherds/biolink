@@ -39,8 +39,8 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2">
-            <div className="relative w-64 h-8">
-              <Image src="/extended_logo.png" alt="Logo" fill className="object-contain" />
+            <div className="relative w-36 h-8">
+              <Image src="/extended_logo.svg" alt="Logo" fill className="object-contain" />
             </div>
           </Link>
         </div>
