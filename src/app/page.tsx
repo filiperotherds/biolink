@@ -2,27 +2,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { ThemeSection } from "@/components/theme-section";
 import { InteractiveProductView } from "@/components/interactive-product-view";
-import { SiteHeader } from "@/components/site-header";
+import { Header } from "@/components/header";
 
 export default function Home() {
   return (
     <>
-      <SiteHeader />
+      <Header />
       <main className="min-h-screen flex flex-col items-center relative overflow-hidden">
         {/* Hero Section */}
         <section className="w-full max-w-5xl mx-auto px-4 pt-32 pb-12 text-center relative z-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
             Do Óleo Vegetal ao Biodiesel
           </h1>
-          <p className="text-sm md:text-md text-muted-foreground max-w-2xl mx-auto mb-8">
-            The all-in-one platform that helps teams build better products,
-            faster.
+          <p className="text-xl md:text-xl font-light text-muted-foreground max-w-2xl mx-auto mb-8">
+            Simplificamos o processo de coleta e reciclagem de óleo usado. Sua empresa em dia, sem complicação e sem custos.
           </p>
           <Link
-            href="#get-started"
+            href="/cadastro"
             className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-8 text-lg font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
           >
-            Get Started
+            Cadastre-se
           </Link>
         </section>
 
@@ -51,7 +50,7 @@ export default function Home() {
         <section className="w-full bg-zinc-100 py-12 relative z-10">
           <div className="max-w-5xl mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-12">
-              Trusted by innovative teams worldwide
+              Empresas apoiadoras do projeto
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[1, 2, 3, 4].map((i) => (

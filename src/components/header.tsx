@@ -17,7 +17,7 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu"
 
-export function SiteHeader() {
+export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
 
   // Add scroll detection for header styling
@@ -103,11 +103,11 @@ export function SiteHeader() {
             </NavigationMenuList>
           </NavigationMenu>
           <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm">
-              Sign Up
+            <Button variant="outline" size="default">
+              Cadastre-se
             </Button>
-            <Button className="cursor-pointer" onClick={() => {}} size="sm">
-              Login
+            <Button className="cursor-pointer" onClick={() => {}} size="default">
+              Entrar
             </Button>
           </div>
         </div>
