@@ -50,7 +50,7 @@ export function Header() {
               />
             </div>
           </Link>
-          <NavigationMenu>
+          <NavigationMenu className="hidden md:flex">
             <NavigationMenuList className="flex gap-1">
               {/* Item com menu suspenso */}
               <NavigationMenuItem>
