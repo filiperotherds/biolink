@@ -73,7 +73,7 @@ export function PartnersCarousel() {
           `}</style>
         </div>
         <div className="text-center mt-8">
-          <p className="text-gray-400 font-light">
+          <p className="text-gray-400 font-light md:text-xl">
             Confiado por empresas responsáveis no Brasil.
           </p>
         </div>
