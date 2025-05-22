@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { InteractiveProductView } from "@/components/interactive-product-view";
 import { PartnersCarousel } from "@/components/partners-carousel";
