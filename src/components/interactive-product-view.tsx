@@ -38,7 +38,7 @@ export function InteractiveProductView() {
   }
 
   return (
-    <section className="w-full py-24 bg-gray-50 overflow-hidden">
+    <section className="w-full py-24 overflow-hidden">
       <div className="container max-w-6xl mx-auto px-4">
         <motion.div
           className="text-center mb-8"

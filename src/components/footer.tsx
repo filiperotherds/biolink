@@ -1,3 +1,5 @@
+'use client'
+
 import { Instagram, Linkedin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,7 +9,7 @@ export default function Footer() {
         <footer className="flex flex-col items-center justify-center w-full bg-zinc-100">
             <div className="flex flex-row items-start justify-between w-full max-w-[980px] py-8">
                 <Image
-                    src={'/extended_logo_gray.png'}
+                    src={'/extended_logo_gray.svg'}
                     alt="BioLink Logo"
                     width={120}
                     height={30}
@@ -42,7 +44,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="flex flex-row items-center justify-between h-16 w-full max-w-[980px] border-t border-zinc-300">
-                <p className="text-sm font-semibold text-zinc-500">© 2025 BioLink Eco. Todos os direitos reservados.</p>
+                <p className="text-sm text-zinc-500">Copyright © 2025 BioLink Eco. Todos os direitos reservados.</p>
                 <div className="flex flex-row items-center justify-end gap-4">
                     <Link target="_blank" href="https://instagram.com/biolink.eco">
                         <Instagram
