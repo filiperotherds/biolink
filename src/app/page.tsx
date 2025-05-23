@@ -185,7 +185,21 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="bg-white border border-zinc-200 md:h-[400px] w-[320px] rounded-2xl shadow-sm hover:shadow-lg hover:translate-y-[-16px] transition-all duration-300"></div>
+            <div className="bg-white border border-zinc-200 md:h-[400px] w-[320px] rounded-2xl shadow-sm hover:shadow-lg hover:translate-y-[-16px] transition-all duration-300">
+              <svg
+                width="200"
+                height="200"
+                viewBox="0 0 200 200"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g fill="currentColor">
+                  <polygon points="60,40 88,35 92,165 62,160" />
+                  <polygon points="112,30 140,38 135,162 107,155" />
+                  <polygon points="35,70 165,65 158,90 45,95" />
+                  <polygon points="43,110 163,105 153,130 38,135" />
+                </g>
+              </svg>
+            </div>
           </div>
         </section>
 
