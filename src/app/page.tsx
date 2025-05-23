@@ -2,10 +2,13 @@ import Link from "next/link";
 import { InteractiveProductView } from "@/components/interactive-product-view";
 import { PartnersCarousel } from "@/components/partners-carousel";
 import { Calendar, Clock } from "lucide-react";
+import { Header } from "@/components/header";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
     <>
+    <Header/>
       <main className="min-h-screen flex flex-col items-center relative overflow-hidden gap-20">
         {/* Hero Section */}
         <section className="w-full max-w-5xl mx-auto px-4 pt-32 text-center relative z-10">
@@ -80,6 +83,7 @@ export default function Home() {
         {/* Interactive Product View */}
         <InteractiveProductView />
       </main>
+      <Footer/>
     </>
   );
 }

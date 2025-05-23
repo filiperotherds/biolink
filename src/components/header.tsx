@@ -63,7 +63,7 @@ export function Header() {
                       href="/"
                       className="top-0 bottom-0 w-40 flex flex-col items-start justify-end bg-zinc-100"
                     >
-                      <div className="relative w-20 h-8">
+                      <div className="relative w-28 h-8">
                         <Image
                           src="/extended_logo_gray.svg"
                           alt="Logo"

@@ -19,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={GeistSans.className}>
+        <Header/>
         {children}
+        <Footer/>
       </body>
     </html>
   );
