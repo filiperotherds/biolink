@@ -127,13 +127,12 @@ export function Header() {
             <Button variant="outline" size="default">
               Cadastre-se
             </Button>
-            <Button
-              className="cursor-pointer"
-              onClick={() => {}}
-              size="default"
-            >
+            <Link
+              href={'/login'}
+              className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
+              >
               Entrar
-            </Button>
+            </Link>
           </div>
         </div>
 
