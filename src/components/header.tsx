@@ -52,6 +52,18 @@ export function Header() {
           </Link>
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList className="flex gap-1">
+              {/* Item simples, sem dropdown */}
+              <NavigationMenuItem>
+                <NavigationMenuLink href="/benefits" className="font-medium cursor-pointer">
+                  Benefícios
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              {/* Item simples, sem dropdown */}
+              <NavigationMenuItem>
+                <NavigationMenuLink href="/about" className="font-medium cursor-pointer">
+                  Sobre
+                </NavigationMenuLink>
+              </NavigationMenuItem>
               {/* Item com menu suspenso */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="bg-transparent hover:bg-zinc-100 transition-all cursor-pointer">
@@ -109,13 +121,6 @@ export function Header() {
                     </div>
                   </div>
                 </NavigationMenuContent>
-              </NavigationMenuItem>
-
-              {/* Item simples, sem dropdown */}
-              <NavigationMenuItem>
-                <NavigationMenuLink href="/sobre" className="cursor-pointer">
-                  Sobre
-                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>

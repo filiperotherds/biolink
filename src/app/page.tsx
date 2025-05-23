@@ -21,7 +21,7 @@ export default function Home() {
             empresa em dia, sem complicações e sem custos.
           </p>
           <Link
-            href="/cadastro"
+            href="/signup"
             className="inline-flex h-[38px] items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
           >
             Cadastre-se
