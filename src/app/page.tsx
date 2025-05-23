@@ -54,7 +54,7 @@ export default function Home() {
                 </g>
               </svg>
               <svg
-                className="absolute bottom-0 right-0 text-zinc-400 group-hover:text-green-600"
+                className="absolute bottom-0 right-0 rounded-br-xl text-zinc-400 group-hover:text-green-600"
                 viewBox="0 0 200 200"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -72,7 +72,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="absolute w-full flex justify-end items-end bottom-0 space-y-4">
-                <div className="relative h-60 w-4/5 border-t border-l rounded-tl-xl border-zinc-300 bg-white">
+                <div className="relative h-60 w-4/5 border-t border-l rounded-tl-xl rounded-br-xl border-zinc-300 bg-white">
                   <div className="absolute top-6 left-6 w-full h-full flex flex-col items-start justify-start gap-3">
                     <div className="flex flex-row items-center justify-start gap-2">
                       <Calendar
@@ -131,7 +131,7 @@ export default function Home() {
                 </g>
               </svg>
               <svg
-                className="absolute bottom-0 right-0 text-zinc-400 group-hover:text-yellow-400"
+                className="absolute bottom-0 right-0 rounded-br-xl text-zinc-400 group-hover:text-yellow-400"
                 viewBox="0 0 200 200"
                 xmlns="http://www.w3.org/2000/svg"
               >
