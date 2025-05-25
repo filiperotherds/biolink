@@ -3,11 +3,13 @@
 import { CalendarCheck, MapPin, Smartphone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { PartnersCarousel } from "@/components/partners-carousel";
-
+import { useRouter } from "next/navigation";
 
 
 export default function Home() {
-  return (
+  const router = useRouter();
+
+    return (
     <div className="flex w-screen min-h-screen flex-col">
       
 
@@ -58,7 +60,7 @@ export default function Home() {
             </div>
 
             <div className="text-center mt-12">
-              <Button className="bg-green-500 hover:bg-green-600 px-8 py-6 text-lg">Agendar agora</Button>
+              <Button onClick={() => router.push('/signup')} size={'lg'}>Cadastre-se</Button>
             </div>
           </div>
         </section>
@@ -70,18 +72,7 @@ export default function Home() {
         </section>
 
 
-        <section className="py-20 bg-green-50">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-6">Pronto para transformar sua gestão ambiental?</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
-              Junte-se a centenas de empresas que já estão economizando recursos e reduzindo seu impacto ambiental.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-green-500 hover:bg-green-600 px-8 py-6 text-lg">Cadastre-se</Button>
-              
-            </div>
-          </div>
-        </section>
+        
       </main>
 
     </div>
