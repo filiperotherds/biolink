@@ -14,10 +14,7 @@ import {
   Gift,
   Droplets,
   Trash2,
-  Recycle,
-  Users,
-  GraduationCap,
-  Star,
+  Recycle
 } from "lucide-react"
 
 export default function BenefitsSection() {
