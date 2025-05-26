@@ -20,7 +20,6 @@ import {
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Add scroll detection for header styling
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -52,18 +51,22 @@ export function Header() {
           </Link>
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList className="flex gap-1">
-              {/* Item simples, sem dropdown */}
+              {/* Botão Benefícios corrigido */}
               <NavigationMenuItem>
-                <NavigationMenuLink href="/benefits" className="font-medium cursor-pointer">
-                  Benefícios
+                <NavigationMenuLink asChild>
+                  <Link href="/benefits" className="font-medium cursor-pointer">
+                    Benefícios
+                  </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
+
               {/* Item simples, sem dropdown */}
               <NavigationMenuItem>
                 <NavigationMenuLink href="/about" className="font-medium cursor-pointer">
                   Sobre
                 </NavigationMenuLink>
               </NavigationMenuItem>
+
               {/* Item com menu suspenso */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="bg-transparent hover:bg-zinc-100 transition-all cursor-pointer">
@@ -135,7 +138,7 @@ export function Header() {
             <Link
               href={'/login'}
               className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
-              >
+            >
               Entrar
             </Link>
           </div>
