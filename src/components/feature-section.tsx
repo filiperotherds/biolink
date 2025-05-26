@@ -6,17 +6,17 @@ const features = [
     name: 'Agendamento flexível.',
     description:
       'Você escolhe o dia e o horário ideais. Nós levamos o recipiente e cuidamos de toda a logística, sem custos.',
-    icon: <CalendarFold size={28}/>,
+    icon: <CalendarFold size={22} className="text-green-600"/>,
   },
   {
     name: 'Dashboard intuitivo.',
     description: 'Visualize em um painel claro o volume coletado, metas atingidas e o impacto ambiental gerado, tudo em tempo real.',
-    icon: <SquareDashedMousePointer size={28}/>,
+    icon: <SquareDashedMousePointer size={22} className="text-green-600"/>,
   },
   {
     name: 'Certificado digital.',
     description: 'Receba comprovantes oficiais de reciclagem para atender obrigações legais e aproveitar incentivos fiscais.',
-    icon: <BadgeCheck size={28}/>,
+    icon: <BadgeCheck size={22} className="text-green-600"/>,
   },
 ]
 
@@ -28,17 +28,19 @@ export default function FeatureSection() {
           <div className="lg:pt-4 lg:pr-8">
             <div className="lg:max-w-lg">
               <h2 className="text-base/7 font-semibold text-green-600">Descarte Inteligente</h2>
-              <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+              <p className="mt-2 text-4xl font-bold tracking-tight text-pretty text-gray-900 sm:text-5xl">
                 Simplifique o ciclo do seu óleo
               </p>
-              <p className="mt-6 text-lg/8 text-gray-600">
+              <p className="mt-6 text-base text-gray-500">
                 Transforme o descarte de óleo usado em um gesto de cuidado com o meio-ambiente. Na Biolink, você agenda, acompanha e comprova cada etapa de forma totalmente gratuita e sem complicações.
               </p>
-              <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none">
+              <dl className="mt-10 max-w-xl space-y-8 text-base text-gray-500 lg:max-w-none">
                 {features.map((feature) => (
                   <div key={feature.name} className="relative pl-9">
                     <dt className="inline font-semibold text-gray-900">
-                      {feature.icon}
+                      <div className="absolute top-0 left-1">
+                        {feature.icon}
+                      </div>
                       {feature.name}
                     </dt>{' '}
                     <dd className="inline">{feature.description}</dd>
