@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model category {
+  id          Int         @id @default(autoincrement())
+  description String
+  companies   companies[]
+}
+
+model companies {
+  id                String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name              String
+  cnpj              String              @unique @db.Char(14)
+  category_id       Int
+  created_at        DateTime            @default(now()) @db.Timestamptz(6)
+  category          category            @relation(fields: [category_id], references: [id], onUpdate: NoAction)
+  company_addresses company_addresses[]
+  interest_requests interest_requests[]
+  users             users[]
+
+  @@index([category_id], map: "idx_companies_category")
+}
+
+model company_addresses {
+  id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  company_id  String    @db.Uuid
+  postal_code String    @db.Char(8)
+  city        String
+  state       String    @db.Char(2)
+  street      String
+  number      String?
+  created_at  DateTime  @default(now()) @db.Timestamptz(6)
+  companies   companies @relation(fields: [company_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([company_id], map: "idx_addresses_company")
+}
+
+model interest_requests {
+  id            String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  company_name  String
+  contact_name  String
+  contact_email String
+  status        request_status @default(pending)
+  created_at    DateTime       @default(now()) @db.Timestamptz(6)
+  cnpj          String         @db.Char(14)
+  postal_code   String         @db.Char(8)
+  city          String
+  state         String         @db.Char(2)
+  street        String
+  processed_by  String?        @db.Uuid
+  processed_at  DateTime?      @db.Timestamptz(6)
+  company_id    String?        @db.Uuid
+  companies     companies?     @relation(fields: [company_id], references: [id], onUpdate: NoAction)
+  users         users?         @relation(fields: [processed_by], references: [id], onUpdate: NoAction)
+
+  @@index([company_id], map: "idx_interest_requests_company")
+}
+
+model users {
+  id                String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  company_id        String              @db.Uuid
+  role              user_role
+  email             String              @unique
+  password_hash     String
+  first_name        String
+  last_name         String
+  created_at        DateTime            @default(now()) @db.Timestamptz(6)
+  interest_requests interest_requests[]
+  companies         companies           @relation(fields: [company_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([company_id], map: "idx_users_company")
+}
+
+enum request_status {
+  pending
+  approved
+  rejected
+}
+
+enum user_role {
+  superadmin
+  company_admin
+  employee
+}
