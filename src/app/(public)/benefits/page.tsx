@@ -38,12 +38,6 @@ export default function BenefitsSection() {
     { icon: Recycle, title: "Reaproveitamento sustentável", description: "Reaproveitamento na indústria de biocombustíveis e sabões." },
   ]
 
-  const socialProof = [
-    { icon: Users, title: "+100 parceiros atendidos", description: "no primeiro ano" },
-    { icon: GraduationCap, title: "Parcerias estratégicas", description: "com universidades e redes de fast-food" },
-    { icon: Star, title: "Feedback positivo", description: "de empresas que reduziram custos e melhoraram sua imagem" },
-  ]
-
   return (
     <div className="min-h-screen bg-white">
       <header className="border-b border-gray-100">
