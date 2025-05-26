@@ -1,3 +1,4 @@
+import Image from "next/image"
 import CloudUpload from "./ui/icons/cloud-upload"
 
 const features = [
@@ -47,7 +48,7 @@ export default function FeatureSection() {
               </dl>
             </div>
           </div>
-          <img
+          <Image
             alt="Product screenshot"
             src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png"
             width={2432}
