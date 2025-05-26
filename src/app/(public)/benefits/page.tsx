@@ -68,7 +68,7 @@ export default function BenefitsSection() {
               </nav>
             </div>
             <div className="flex items-center space-x-4">
-              <button className="text-gray-600 hover:text-gray-900">Cadastre-se</button>
+              <button className="text-gray-600 hover:text-gray-900 ">Cadastre-se</button>
               <Button className="bg-green-500 hover:bg-green-600 text-white">Entrar</Button>
             </div>
           </div>
@@ -83,7 +83,7 @@ export default function BenefitsSection() {
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
             Simplificamos o processo de coleta e reciclagem de óleo usado. Sua empresa em dia, sem complicações e sem custos.
           </p>
-          <Button className="bg-green-500 hover:bg-green-600 text-white text-lg px-8 py-3">
+          <Button className="bg-green-500 hover:bg-green-600 text-white text-lg px-8 py-3 cursor-pointer">
             Cadastre-se
           </Button>
         </div>
