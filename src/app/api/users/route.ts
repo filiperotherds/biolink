@@ -3,7 +3,7 @@ import prisma from '@/lib/prisma';
 
 export async function GET() {
     try {
-        const users = await prisma.users.findMany()
+        const users = await prisma.users.findMany();
         return NextResponse.json(users);
     } catch (e) {
         return NextResponse.json({ error: 'Failed to fetch users: ', e }, { status: 500 });

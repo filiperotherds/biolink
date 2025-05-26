@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { InteractiveProductView } from "@/components/interactive-product-view";
 import { PartnersCarousel } from "@/components/partners-carousel";
 import { Calendar, Clock, Clock2 } from "lucide-react";
 import { Header } from "@/components/header";
 import Footer from "@/components/footer";
 import { Badge } from "@/components/ui/badge";
+import FeatureSection from "@/components/feature-section";
 
 export default function Home() {
   return (
@@ -202,9 +202,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* Interactive Product View */}
-        <InteractiveProductView />
+        <FeatureSection/>
       </main>
       <Footer />
     </>

@@ -6,7 +6,7 @@ import Logo3 from "./logos/logo-3";
 export function PartnersCarousel() {
   return (
     <div className="w-full max-w-5xl bg-white px-4">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <div className="relative overflow-hidden">
           {/* Left fade gradient */}
           <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
