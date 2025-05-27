@@ -1,6 +1,5 @@
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { signOut } from "next-auth/react";
 import { SignOut } from "@/components/signout";
 
 export default async function Dashboard() {
