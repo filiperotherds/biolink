@@ -5,7 +5,6 @@ import {
   IconFolder,
   IconShare3,
   IconTrash,
-  type Icon,
 } from "@tabler/icons-react"
 
 import {
@@ -24,6 +23,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { LucideIcon } from "lucide-react"
 
 export function NavDocuments({
   items,
@@ -31,7 +31,7 @@ export function NavDocuments({
   items: {
     name: string
     url: string
-    icon: Icon
+    icon: LucideIcon
   }[]
 }) {
   const { isMobile } = useSidebar()
