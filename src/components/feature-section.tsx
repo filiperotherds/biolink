@@ -54,7 +54,7 @@ export default function FeatureSection() {
             src="/placeholder.svg"
             width={2432}
             height={1442}
-            className="w-2xl max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-194 md:-ml-4 lg:-ml-0"
+            className="w-2xl max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-142 md:-ml-4 lg:-ml-0"
           />
         </div>
       </div>
