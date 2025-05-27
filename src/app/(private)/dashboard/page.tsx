@@ -1,22 +1,19 @@
-'use client';
-
-import prisma from "@/lib/prisma";
-import { category } from "../../../../generated/prisma";
+import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import { signOut } from "next-auth/react";
+import { SignOut } from "@/components/signout";
 
 export default async function Dashboard() {
-    const categories = await prisma.category.findMany()
 
+    const session = await auth();
+    if(!session) {
+        redirect("/login");
+    }
 
     return (
-        <main className="flex flex-col w-full h-full items-start justify-start">
-            <ul>
-                {categories.map((category: category) => (
-                    <li key={category.id} className="p-4 border-b">
-                        <h2 className="text-xl font-bold">{category.description}</h2>
-                        <p>{category.description}</p>
-                    </li>
-                ))}
-            </ul>
+        <main className="flex flex-col w-screen h-screen items-center justify-center">
+            <p>{session.user?.email}</p>
+            <SignOut/>
         </main>
     )
 }
