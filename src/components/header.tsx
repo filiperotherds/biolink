@@ -31,13 +31,13 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed w-full top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-background/50 backdrop-blur-md shadow-sm"
           : "bg-background/80 backdrop-blur-sm"
       } border-b`}
     >
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
+      <div className="container max-w-8xl mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-16">
           <Link href="/" className="flex items-center gap-2">
             <div className="relative w-32 h-8">
