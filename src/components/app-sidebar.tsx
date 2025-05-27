@@ -146,7 +146,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="text-zinc-800">
         <NavMain items={data.navMain} />
         <NavDocuments items={data.documents} />
       </SidebarContent>
