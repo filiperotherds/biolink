@@ -1,27 +1,75 @@
-import { CalendarCog, Clock, Factory, LayoutDashboard, LucideIcon } from "lucide-react";
+import {
+  Boxes,
+  Clock,
+  FolderOpen,
+  Handshake,
+  LayoutDashboard,
+  LucideIcon,
+  TruckElectric,
+} from "lucide-react";
 
-interface Link {
+export type SidebarItemType = {
   description: string;
   url: string;
-  icon: LucideIcon;
+  default_icon: LucideIcon;
 }
 
-const superadmin: Link[] = [
+const Superadmin: SidebarItemType[] = [
   {
     description: "Dashboard",
     url: "/dashboard",
-    icon: LayoutDashboard,
+    default_icon: LayoutDashboard,
   },
   {
     description: "Agendamentos",
     url: "/schedule",
-    icon: Clock,
+    default_icon: Clock,
   },
   {
     description: "Empresas Parceiras",
     url: "/partners",
-    icon: Factory,
+    default_icon: Handshake,
+  },
+  {
+    description: "Documentos",
+    url: "/documentation",
+    default_icon: FolderOpen,
   },
 ];
 
-export { superadmin };
+const CompanyAdmin: SidebarItemType[] = [
+  {
+    description: "Dashboard",
+    url: "/dashboard",
+    default_icon: LayoutDashboard,
+  },
+  {
+    description: "Coletas",
+    url: "/collect",
+    default_icon: TruckElectric,
+  },
+  {
+    description: "Armazenamento",
+    url: "/storage",
+    default_icon: Boxes,
+  },
+];
+
+const Employee: SidebarItemType[] = [
+  {
+    description: "Dashboard",
+    url: "/dashboard",
+    default_icon: LayoutDashboard,
+  },
+  {
+    description: "Coletas",
+    url: "/collect",
+    default_icon: TruckElectric,
+  },
+  {
+    description: "Armazenamento",
+    url: "/storage",
+    default_icon: Boxes,
+  },
+];
+export { Superadmin, CompanyAdmin, Employee };
