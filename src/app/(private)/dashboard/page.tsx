@@ -1,22 +1,25 @@
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { user_role } from "../../../../generated/prisma";
-import { CompanyAdminDashboard, EmployeeDashboard, SuperAdminDashboard } from "@/components/dashboard";
-import Sidebar from "@/components/sidebar";
+import {
+  CompanyAdminDashboard,
+  EmployeeDashboard,
+  SuperAdminDashboard,
+} from "@/components/dashboard";
 
 interface User {
-  first_name: string,
-  last_name: string,
-  email: string,
-  role: user_role
+  first_name: string;
+  last_name: string;
+  email: string;
+  role: user_role;
 }
 
 const userTeste: User = {
-  first_name: 'Teste',
-  last_name: 'de Teste',
-  email: 'teste@teste.com',
-  role: 'superadmin'
-}
+  first_name: "Teste",
+  last_name: "de Teste",
+  email: "teste@teste.com",
+  role: "superadmin",
+};
 
 export default async function Page() {
   const session = await auth();
@@ -25,19 +28,16 @@ export default async function Page() {
   }
 
   switch (userTeste.role) {
-    case 'superadmin':
+    case "superadmin":
       return (
-        <main className="w-screen h-screen flex flex-row items-start justify-start">
-          <Sidebar role={userTeste.role}/>
-          <SuperAdminDashboard/>
+        <main>
+          <SuperAdminDashboard />
         </main>
-      )
-    case 'company_admin':
-      return <CompanyAdminDashboard/>
-    case 'employee':
+      );
+    case "company_admin":
+      return <CompanyAdminDashboard />;
+    case "employee":
     default:
-      return <EmployeeDashboard/>
+      return <EmployeeDashboard />;
   }
-    
-
 }

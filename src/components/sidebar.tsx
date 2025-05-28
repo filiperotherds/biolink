@@ -4,6 +4,7 @@ import Link from "next/link";
 import { user_role } from "../../generated/prisma";
 import { superadmin } from "@/lib/sidebar-content";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 interface SidebarProps {
   role: user_role;
@@ -28,7 +29,7 @@ export default function Sidebar({ role }: SidebarProps) {
                       isActive ? "bg-zinc-100 text-zinc-800" : ""
                     } h-8 w-full flex flex-row items-center justify-start gap-2 px-2 mb-1 rounded-[6px] hover:bg-zinc-100 font-medium text-zinc-600 hover:text-zinc-800 transition-all`}
                   >
-                    <Icon size={16} strokeWidth={2.5}/>
+                    <Icon size={16} strokeWidth={2.5} />
                     <span className="text-sm font-medium">
                       {item.description}
                     </span>
@@ -43,8 +44,10 @@ export default function Sidebar({ role }: SidebarProps) {
 
   return (
     <div className="h-full w-64 flex flex-col items-center justify-between p-2 shadow border-r border-zinc-200">
-      <div className="w-full flex flex-col gap-16">
-        <div>header</div>
+      <div className="w-full flex flex-col gap-6">
+        <div className="w-full p-2">
+          <Image src={"/extended_logo_gray.svg"} alt="Biolink Logo" width={200} height={50} />
+        </div>
         <div className="w-full flex flex-col items-center justify-start gap-2">
           {renderSidebar(role)}
         </div>

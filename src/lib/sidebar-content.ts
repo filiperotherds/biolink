@@ -1,4 +1,4 @@
-import { CalendarCog, Clock, LayoutDashboard, LucideIcon } from "lucide-react";
+import { CalendarCog, Clock, Factory, LayoutDashboard, LucideIcon } from "lucide-react";
 
 interface Link {
   description: string;
@@ -13,9 +13,14 @@ const superadmin: Link[] = [
     icon: LayoutDashboard,
   },
   {
-    description: "Agenda",
+    description: "Agendamentos",
     url: "/schedule",
     icon: Clock,
+  },
+  {
+    description: "Empresas Parceiras",
+    url: "/partners",
+    icon: Factory,
   },
 ];
 
