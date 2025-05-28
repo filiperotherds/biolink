@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import type { user_role } from "../../generated/prisma";
 import type { SidebarItemType } from "@/lib/sidebar-content";
 import { Superadmin, CompanyAdmin } from "@/lib/sidebar-content";
+import { SignOut } from "./signout";
 
 interface SidebarProps {
   role: user_role;
@@ -60,7 +61,7 @@ export default function Sidebar({ role }: SidebarProps) {
         </ul>
       </div>
       <div className="text-center py-2 text-sm text-zinc-500">
-        © 2025 Biolink
+        <SignOut/>
       </div>
     </aside>
   );
