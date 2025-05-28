@@ -1,22 +1,45 @@
-'use client';
+import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import { user_role } from "../../../../generated/prisma";
+import {
+  CompanyAdminDashboard,
+  EmployeeDashboard,
+  SuperAdminDashboard,
+} from "@/components/dashboard";
+import Sidebar from "@/components/sidebar";
 
-import prisma from "@/lib/prisma";
-import { category } from "../../../../generated/prisma";
+interface User {
+  first_name: string;
+  last_name: string;
+  email: string;
+  role: user_role;
+}
 
-export default async function Dashboard() {
-    const categories = await prisma.category.findMany()
+const userTeste: User = {
+  first_name: "Teste",
+  last_name: "de Teste",
+  email: "teste@teste.com",
+  role: "superadmin",
+};
 
+export default async function Page() {
+  const session = await auth();
+  if (!session) {
+    redirect("/login");
+  }
 
-    return (
-        <main className="flex flex-col w-full h-full items-start justify-start">
-            <ul>
-                {categories.map((category: category) => (
-                    <li key={category.id} className="p-4 border-b">
-                        <h2 className="text-xl font-bold">{category.description}</h2>
-                        <p>{category.description}</p>
-                    </li>
-                ))}
-            </ul>
+  switch (userTeste.role) {
+    case "superadmin":
+      return (
+        <main className="w-screen h-screen flex flex-row items-start justify-start">
+          <Sidebar role="superadmin" />
+          <SuperAdminDashboard />
         </main>
-    )
+      );
+    case "company_admin":
+      return <CompanyAdminDashboard />;
+    case "employee":
+    default:
+      return <EmployeeDashboard />;
+  }
 }

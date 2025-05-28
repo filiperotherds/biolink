@@ -14,10 +14,7 @@ import {
   Gift,
   Droplets,
   Trash2,
-  Recycle,
-  Users,
-  GraduationCap,
-  Star,
+  Recycle
 } from "lucide-react"
 
 export default function BenefitsSection() {
@@ -36,12 +33,6 @@ export default function BenefitsSection() {
     { icon: Droplets, title: "Proteção da água", description: "1 litro de óleo descartado corretamente evita a contaminação de até 25 mil litros de água." },
     { icon: Trash2, title: "Redução de problemas urbanos", description: "Redução de pragas urbanas e entupimentos." },
     { icon: Recycle, title: "Reaproveitamento sustentável", description: "Reaproveitamento na indústria de biocombustíveis e sabões." },
-  ]
-
-  const socialProof = [
-    { icon: Users, title: "+100 parceiros atendidos", description: "no primeiro ano" },
-    { icon: GraduationCap, title: "Parcerias estratégicas", description: "com universidades e redes de fast-food" },
-    { icon: Star, title: "Feedback positivo", description: "de empresas que reduziram custos e melhoraram sua imagem" },
   ]
 
   return (

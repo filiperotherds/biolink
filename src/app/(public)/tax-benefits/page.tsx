@@ -105,24 +105,6 @@ export default function BeneficiosFiscais() {
         </div>
       </header>
 
-      {/* Como Funciona Section - Sem imagem de fundo */}
-      <section className="relative max-w-4xl mx-auto px-6 py-16 rounded-xl overflow-hidden bg-gray-50">
-        <div className="relative z-10 text-gray-900">
-          <h2 className="text-4xl font-extrabold mb-6 text-center">Como Funciona</h2>
-          <p className="text-lg leading-relaxed mb-6">
-            Ao reciclar o óleo de cozinha usado com a Biolink, sua empresa obtém benefícios fiscais previstos na
-            legislação ambiental. Através do nosso serviço, você garante a destinação correta e sustentável do óleo
-            usado, o que permite reduzir impostos, obter créditos tributários e apresentar certificações oficiais
-            válidas para órgãos reguladores e fiscais.
-          </p>
-          <p className="text-lg leading-relaxed">
-            Cuidamos de todo o processo para você: desde o agendamento da coleta personalizada até a entrega da
-            documentação necessária para comprovação. Com a Biolink, a sustentabilidade se transforma em um diferencial
-            competitivo, agregando valor ao seu negócio.
-          </p>
-        </div>
-      </section>
-
       {/* Benefits Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white border-0 shadow-none">
         <div className="text-center mb-12">

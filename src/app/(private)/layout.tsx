@@ -1,28 +1,22 @@
+import type React from "react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "../globals.css";
-
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
+import { GeistSans } from "geist/font/sans";
 
 export const metadata: Metadata = {
-  title: "BioLink - Conectando a Produção de Biodiesel",
-  description: "Facilitando a Logística Reversa de Óleo Vegetal Usado"
+  title: "BioLink - Gestão sustentável e descomplicada de óleo usado",
+  description:
+    "A Biolink transforma resíduos em impacto positivo — simples, gratuito e sustentável para quem produz e para o planeta.",
 };
 
-export default function LoginLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html>
-      <body
-        className={`${inter.variable} antialiased`}
-      >
+    <html lang="en" className="scroll-smooth">
+      <body className={GeistSans.className}>
         {children}
       </body>
     </html>
