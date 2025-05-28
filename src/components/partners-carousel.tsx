@@ -59,14 +59,14 @@ export function PartnersCarousel() {
 
           <style jsx>{`
             .logos-slide {
-              animation: slide 30s linear infinite;
+              animation: slide 25s linear infinite;
             }
 
             @keyframes slide {
-              0% {
+              100% {
                 transform: translateX(0);
               }
-              100% {
+              0% {
                 transform: translateX(calc(-100% / 2));
               }
             }

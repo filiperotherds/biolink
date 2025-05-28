@@ -6,6 +6,7 @@ import {
   EmployeeDashboard,
   SuperAdminDashboard,
 } from "@/components/dashboard";
+import Sidebar from "@/components/sidebar";
 
 interface User {
   first_name: string;
@@ -30,7 +31,8 @@ export default async function Page() {
   switch (userTeste.role) {
     case "superadmin":
       return (
-        <main>
+        <main className="w-screen h-screen flex flex-row items-start justify-start">
+          <Sidebar role="superadmin" />
           <SuperAdminDashboard />
         </main>
       );

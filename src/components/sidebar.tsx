@@ -43,10 +43,10 @@ export default function Sidebar({ role }: SidebarProps) {
   }
 
   return (
-    <div className="h-full w-64 flex flex-col items-center justify-between p-2 shadow border-r border-zinc-200">
-      <div className="w-full flex flex-col gap-6">
+    <div className="h-full w-72 flex flex-col items-center justify-between p-4 shadow border-r border-zinc-200">
+      <div className="w-full flex flex-col gap-4">
         <div className="w-full p-2">
-          <Image src={"/extended_logo_gray.svg"} alt="Biolink Logo" width={200} height={50} />
+          <Image src={"/extended_logo_gray.svg"} alt="Biolink Logo" width={140} height={40} />
         </div>
         <div className="w-full flex flex-col items-center justify-start gap-2">
           {renderSidebar(role)}
