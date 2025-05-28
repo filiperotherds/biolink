@@ -1,7 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
 import "../globals.css";
-import Sidebar from "@/components/sidebar";
 import { GeistSans } from "geist/font/sans";
 
 export const metadata: Metadata = {
