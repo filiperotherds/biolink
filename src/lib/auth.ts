@@ -6,7 +6,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import GitHub from "next-auth/providers/github";
-import { schema } from "./schema";
+import { schema } from "@/lib/schema";
 
 const adapter = PrismaAdapter(db);
 
@@ -22,10 +22,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       authorize: async (credentials) => {
         const validatedCredentials = schema.parse(credentials);
 
-        const user = await db.users.findFirst({
+        const user = await db.user.findFirst({
           where: {
             email: validatedCredentials.email,
-            password_hash: validatedCredentials.password,
+            password: validatedCredentials.password,
           },
         });
 

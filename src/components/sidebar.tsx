@@ -4,8 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import type { user_role } from "../../generated/prisma";
-import type { SidebarItemType } from "@/lib/sidebar-content";
-import { Superadmin, CompanyAdmin } from "@/lib/sidebar-content";
+import type { SidebarItemType } from "@/lib/content/sidebar-content";
+import { Superadmin, CompanyAdmin } from "@/lib/content/sidebar-content";
 import { SignOut } from "./signout";
 
 interface SidebarProps {
