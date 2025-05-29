@@ -112,7 +112,7 @@ export function Header() {
                         </p>
                       </NavigationMenuLink>
                       <NavigationMenuLink
-                        href="/beneficios-fiscais"
+                        href="/tax-benefits"
                         className="w-64 flex flex-col items-start justify-start gap-1 hover:bg-zinc-100 rounded-md"
                       >
                         <p className="font-medium">Benefícios Fiscais</p>
