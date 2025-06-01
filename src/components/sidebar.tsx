@@ -38,31 +38,26 @@ function SidebarItem({ item, isActive }: SidebarItemProps) {
   );
 }
 
-export default function Sidebar({ role }: SidebarProps) {
+export default function Sidebar() {
   const pathname = usePathname();
-  const items: SidebarItemType[] = role === "superadmin" ? Superadmin : CompanyAdmin;
 
   return (
-    <aside className="h-full w-72 flex flex-col justify-between p-4 shadow border-r border-zinc-200 bg-white">
-      <div className="space-y-4">
-        <div className="p-2">
-          <Image
-            src="/extended_logo_gray.svg"
-            alt="Biolink Logo"
-            width={140}
-            height={40}
-          />
+    <div className="w-72 h-full p-2 gap-2 flex flex-col items-center justify-start bg-zinc-100 border-r border-zinc-200">
+      <div className="w-full flex-1 flex flex-col items-center justify-start">
+        <div className="w-full h-16 flex flex-row items-center justify-between border-b ">
+          <div className="h-full flex flex-row items-center justify-start">
+            <div className="">
+
+            </div>
+          </div>
         </div>
-        <ul className="w-full">
-          {items.map((item) => {
-            const isActive = pathname === item.url;
-            return <SidebarItem key={item.url} item={item} isActive={isActive} />;
-          })}
-        </ul>
+        <div className="">
+
+        </div>
       </div>
-      <div className="text-center py-2 text-sm text-zinc-500">
-        <SignOut/>
+      <div className="w-full h-32 flex">
+
       </div>
-    </aside>
+    </div> 
   );
 }
