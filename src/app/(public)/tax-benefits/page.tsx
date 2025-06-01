@@ -1,11 +1,18 @@
 "use client"
 import Image from "next/image"
-
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-
 import { Badge } from "@/components/ui/badge"
-
-import { Award, Clock, FileText, Globe, ShieldCheck, TrendingUp, User, Users, Building } from "lucide-react"
+import {
+  Award,
+  Clock,
+  FileText,
+  Globe,
+  ShieldCheck,
+  TrendingUp,
+  User,
+  Users,
+  Building,
+} from "lucide-react"
 
 export default function BeneficiosFiscais() {
   const beneficios = [
@@ -67,21 +74,25 @@ export default function BeneficiosFiscais() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Header Section com Imagem */}
+      {/* Seção de cabeçalho com imagem e texto */}
       <header className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Conteúdo de Texto */}
+            {/* Texto */}
             <div className="text-center lg:text-left">
-              <Badge className="mb-4 bg-green-100 text-green-800 cursor-default">Sustentabilidade & Economia</Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">Benefícios Fiscais para o Seu Negócio</h1>
+              <Badge className="mb-4 bg-green-100 text-green-800 cursor-default">
+                Sustentabilidade & Economia
+              </Badge>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                Benefícios Fiscais para o Seu Negócio
+              </h1>
               <p className="text-xl text-gray-600 leading-relaxed">
                 Aproveite incentivos e descontos fiscais enquanto contribui para um mundo mais sustentável.
               </p>
             </div>
 
             {/* Imagem */}
-            <div className="relative">
+            <div className="relative lg:mt-6">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <Image
                   src="/fundo_como.jpg"
@@ -93,7 +104,6 @@ export default function BeneficiosFiscais() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-green-900/20 to-transparent"></div>
               </div>
-              {/* Badge flutuante */}
               <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-4 border border-green-100">
                 <div className="flex items-center gap-3">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
@@ -105,8 +115,8 @@ export default function BeneficiosFiscais() {
         </div>
       </header>
 
-      {/* Benefits Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white border-0 shadow-none">
+      {/* Grid de Benefícios */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Vantagens Exclusivas</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -117,16 +127,15 @@ export default function BeneficiosFiscais() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {beneficios.map((beneficio, index) => {
             const Icon = beneficio.icon
+            const borderColor = beneficio.colorClass
+              .split(" ")
+              .find((c) => c.startsWith("text-"))
+              ?.replace("text-", "border-") ?? "border-green-700"
+
             return (
               <Card
                 key={index}
-                className={`group border border-zinc-100 hover:border-2 hover:${beneficio.colorClass
-                  .split(" ")
-                  .find((c) => c.startsWith("text-"))
-                  ?.replace(
-                    "text-",
-                    "border-",
-                  )} transition-all duration-300 shadow-lg bg-white/80 backdrop-blur-sm hover:-translate-y-1 cursor-default`}
+                className={`group border border-zinc-100 hover:border-2 hover:${borderColor} transition-all duration-300 shadow-lg bg-white/80 backdrop-blur-sm hover:-translate-y-1 cursor-default`}
               >
                 <CardHeader className="pb-4">
                   <div
@@ -134,7 +143,9 @@ export default function BeneficiosFiscais() {
                   >
                     <Icon className="w-7 h-7" />
                   </div>
-                  <CardTitle className="group-hover:text-green-600 transition-colors">{beneficio.title}</CardTitle>
+                  <CardTitle className="group-hover:text-green-600 transition-colors">
+                    {beneficio.title}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 leading-relaxed">{beneficio.description}</p>
@@ -145,24 +156,24 @@ export default function BeneficiosFiscais() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Seção de CTA */}
       <section className="text-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <Card className="border-0 shadow-lg bg-gradient-to-r from-green-500 to-blue-600 text-white">
           <CardContent className="py-12">
             <h3 className="text-2xl font-bold mb-4">Pronto para Começar?</h3>
             <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-              Entre em contato conosco e descubra como sua empresa pode se beneficiar fiscalmente enquanto contribui
-              para um planeta mais sustentável.
+              Entre em contato conosco e descubra como sua empresa pode se beneficiar fiscalmente enquanto
+              contribui para um planeta mais sustentável.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors cursor-pointer"
+                className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
                 onClick={() => alert("Entraremos em contato em breve!")}
               >
                 Falar com Especialista
               </button>
               <button
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors cursor-pointer"
+                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors"
                 onClick={() => alert("Download iniciado!")}
               >
                 Baixar Documentação
