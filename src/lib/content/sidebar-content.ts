@@ -1,4 +1,4 @@
-import { Box, Building2, Layers2, LayoutGrid, LucideIcon, Map, PackageOpen } from "lucide-react";
+import { Box, Building2, Layers2, LayoutGrid, LucideIcon, Map } from "lucide-react";
 
 export type SidebarItemType = {
   description: string;
