@@ -1,6 +1,5 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
-import { SysAdminDashboard } from "@/components/screens/dashboard";
 import Sidebar from "@/components/sidebar";
 export default async function AdminLayout() {
   const session = await auth();
@@ -10,20 +9,21 @@ export default async function AdminLayout() {
   }
 
   if (session.user.role === "SYS_ADMIN") {
-    return (
-      <div className="h-screen w-screen flex flex-row items-start justify-start">
-        <Sidebar/>
-        <SysAdminDashboard/>
-      </div>
-    );
+    redirect("/admin/dashboard");
   }
   if (session.user.role === "MANAGER_USER") {
-    return <div>Manager Dashboard</div>;
+    return (
+      <div className="h-screen w-screen flex flex-row items-start justify-start">
+        <Sidebar name={session.user.name} email={session.user.email} role="MANAGER"/>
+        <span>Manager User Dashboard</span>
+      </div>
+    );
   }
   if (session.user.role === "STANDARD_USER") {
     return (
       <div className="h-screen w-screen flex flex-row items-start justify-start">
-        <Sidebar/>
+        <Sidebar name={session.user.name} email={session.user.email} role="STANDARD"/>
+        <span>Standard User Dashboard</span>
       </div>
     );
   }

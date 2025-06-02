@@ -1,63 +1,131 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
-import type { user_role } from "../../generated/prisma";
-import type { SidebarItemType } from "@/lib/content/sidebar-content";
-import { Superadmin, CompanyAdmin } from "@/lib/content/sidebar-content";
-import { SignOut } from "./signout";
+import { ChevronDown, LogOut } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { SidebarData, SysAdmin, Manager, Standard } from "@/lib/content/sidebar-content";
+import Link from "next/link";
 
-interface SidebarProps {
-  role: user_role;
+interface SidebarUserProps {
+  name: string;
+  email: string;
+  role: "SYS_ADMIN" | "MANAGER" | "STANDARD"; // Exemplo de role vindo da session
 }
 
-interface SidebarItemProps {
-  item: SidebarItemType;
-  isActive: boolean;
+// Ajustamos para `SidebarData[]`
+interface SidebarItensProps {
+  pathname: string;
+  data: SidebarData[];
 }
 
-function SidebarItem({ item, isActive }: SidebarItemProps) {
-  // Escolhe o ícone ativo ou padrão
-  const Icon = item.default_icon;
-
+function SidebarItens({ pathname, data }: SidebarItensProps) {
   return (
-    <li>
-      <Link
-        href={item.url}
-        className={
-          `flex items-center gap-2 px-2 h-8 mb-1 rounded-[6px]
-           ${isActive ? "bg-zinc-100 text-zinc-800" : "text-zinc-600"}
-           hover:bg-zinc-100 hover:text-zinc-800 transition-all`
-        }
-      >
-        <Icon size={16} strokeWidth={2.5} />
-        <span className="text-sm font-medium">{item.description}</span>
-      </Link>
-    </li>
+    <nav className="w-full mt-2 p-2">
+      {data.map((section) => (
+        <div key={section.title} className="mb-4">
+          <h3 className="text-xs font-semibold text-zinc-500">
+            {section.title}
+          </h3>
+          <ul className="mt-2">
+            {section.itens.map((item) => {
+              const isActive = pathname === item.url;
+              const Icon = item.default_icon;
+              return (
+                <li key={item.url} className="mb-1">
+                  <Link
+                    href={item.url}
+                    className={`
+                      flex items-center gap-2 px-2 py-1.5 rounded-md transition-all
+                      ${isActive
+                        ? "bg-white shadow-sm text-zinc-800"
+                        : "text-zinc-800 hover:bg-white"}
+                    `}
+                  >
+                    <Icon size={16} strokeWidth={2} className="text-zinc-400"/>
+                    <span className="text-sm">{item.description}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))}
+    </nav>
   );
 }
 
-export default function Sidebar() {
+export default function Sidebar({ name, email, role }: SidebarUserProps) {
   const pathname = usePathname();
+  const iconLetters = !name ? "" : name.slice(0, 2).toUpperCase();
+
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    await signOut();
+  };
+
+  const handleConfig = () => {
+    router.push("/account-settings");
+  };
+
+  let sidebarData: SidebarData[];
+  if (role === "SYS_ADMIN") {
+    sidebarData = SysAdmin;
+  } else if (role === "MANAGER") {
+    sidebarData = Manager;
+  } else {
+    sidebarData = Standard;
+  }
 
   return (
-    <div className="w-72 h-full p-2 gap-2 flex flex-col items-center justify-start bg-zinc-100 border-r border-zinc-200">
+    <div className="w-80 h-full gap-2 flex flex-col items-center justify-start bg-zinc-50 border-r border-zinc-200">
       <div className="w-full flex-1 flex flex-col items-center justify-start">
         <div className="w-full h-16 flex flex-row items-center justify-between border-b ">
-          <div className="h-full flex flex-row items-center justify-start">
-            <div className="">
-
+          {/* Seção de usuário */}
+          <div className="h-full p-2 gap-2.5 flex flex-row items-center justify-start">
+            <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-white shadow">
+              <span className="font-semibold text-zinc-600">{iconLetters}</span>
+            </div>
+            <div className="h-full gap-1 flex flex-col items-start justify-center">
+              <span className="text-sm font-medium">{name}</span>
+              <span className="text-xs text-zinc-500">{email}</span>
             </div>
           </div>
-        </div>
-        <div className="">
 
+          {/* Botão de opções */}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="w-7 h-7 mr-2 flex items-center justify-center focus:outline-none rounded-md hover:bg-zinc-100 transition-all">
+              <ChevronDown
+                size={16}
+                strokeWidth={2.5}
+                className="text-zinc-600"
+              />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem onClick={handleConfig}>
+                <div className="w-36 flex flex-row items-center justify-between">
+                  <span>Configurações</span>
+                </div>
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={handleSignOut}>
+                <div className="w-36 flex flex-row items-center justify-between">
+                  <span>Sair</span>
+                  <LogOut size={16} />
+                </div>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
+        <SidebarItens pathname={pathname} data={sidebarData} />
       </div>
-      <div className="w-full h-32 flex">
-
-      </div>
-    </div> 
+      <div className="w-full h-32 flex"></div>
+    </div>
   );
 }

@@ -5,11 +5,14 @@ import Image from "next/image"
 import Link from "next/link"
 import { redirect } from "next/navigation";
 
-const LoginPage = async () => {
+const SignIn = async () => {
   
   const session = await auth();
-  if (session) {
-    redirect("/dashboard");
+
+  if (session?.user.role === "SYS_ADMIN") {
+    redirect("/admin/dashboard");
+  } else if (session) {
+    redirect("/dashboard")
   }
 
   return (
@@ -44,4 +47,4 @@ const LoginPage = async () => {
   )
 }
 
-export default LoginPage;
+export default SignIn;

@@ -7,27 +7,87 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum CompanyType {
+  EDUCACIONAL
+  RESTAURANTE
+  CONDOMINIO
+  EMPRESA
+}
+
 enum Role {
   SYS_ADMIN
   MANAGER_USER
   STANDARD_USER
 }
 
-model User {
-  id            String          @id @default(cuid())
-  name          String?
-  email         String          @unique
-  password      String?
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  // Optional for WebAuthn support
-  Authenticator Authenticator[]
-  role          Role            @default(STANDARD_USER)
+enum State {
+  AC
+  AL
+  AP
+  AM
+  BA
+  CE
+  DF
+  ES
+  GO
+  MA
+  MT
+  MS
+  MG
+  PA
+  PB
+  PR
+  PE
+  PI
+  RJ
+  RN
+  RS
+  RO
+  RR
+  SC
+  SP
+  SE
+  TO
+}
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model Instituition {
+  id            String       @id @default(cuid())
+  razaoSocial   String
+  cnpj          String       @unique
+  tipo          CompanyType
+  addresses     Adrress[]
+  users         User[]       // Relação 1:N: uma Instituition tem vários usuários
+}
+
+model Adrress {
+  id              String        @id @default(cuid())
+  cep             String
+  street          String
+  number          String
+  city            String
+  state           State
+
+  instituitionId  String
+  instituition    Instituition  @relation(fields: [instituitionId], references: [id])
+}
+
+model User {
+  id              String          @id @default(cuid())
+  name            String?
+  email           String          @unique
+  password        String?
+  emailVerified   DateTime?
+  image           String?
+  accounts        Account[]
+  sessions        Session[]
+  Authenticator   Authenticator[]
+  role            Role            @default(STANDARD_USER)
+
+  instituitionId  String?
+  instituition    Instituition?    @relation(fields: [instituitionId], references: [id])
+
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
 }
 
 model Account {
@@ -69,7 +129,6 @@ model VerificationToken {
   @@id([identifier, token])
 }
 
-// Optional for WebAuthn support
 model Authenticator {
   credentialID         String  @unique
   userId               String

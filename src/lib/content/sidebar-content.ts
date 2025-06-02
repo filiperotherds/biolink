@@ -1,75 +1,83 @@
-import {
-  Boxes,
-  Clock,
-  FolderOpen,
-  Handshake,
-  LayoutDashboard,
-  LucideIcon,
-  TruckElectric,
-} from "lucide-react";
+import { Box, Building2, Layers2, LayoutGrid, LucideIcon, PackageOpen } from "lucide-react";
 
 export type SidebarItemType = {
   description: string;
   url: string;
   default_icon: LucideIcon;
-}
+};
 
-const Superadmin: SidebarItemType[] = [
+export type SidebarData = {
+  title: string;
+  itens: SidebarItemType[];
+};
+
+const SysAdmin: SidebarData[] = [
   {
-    description: "Dashboard",
-    url: "/dashboard",
-    default_icon: LayoutDashboard,
+    title: "Operacional",
+    itens: [
+      {
+        description: "Dashboard",
+        url: "/admin/dashboard",
+        default_icon: LayoutGrid,
+      },
+      {
+        description: "Schedule",
+        url: "/schedule",
+        default_icon: Layers2,
+      },
+      {
+        description: "Supplies",
+        url: "/supplies",
+        default_icon: PackageOpen,
+      },
+    ],
   },
   {
-    description: "Agendamentos",
-    url: "/schedule",
-    default_icon: Clock,
-  },
-  {
-    description: "Empresas Parceiras",
-    url: "/partners",
-    default_icon: Handshake,
-  },
-  {
-    description: "Documentos",
-    url: "/documentation",
-    default_icon: FolderOpen,
+    title: "Administrativo",
+    itens: [
+      {
+        description: "Instituições",
+        url: "/institutions",
+        default_icon: Building2,
+      },
+      {
+        description: "Schedule",
+        url: "/schedule",
+        default_icon: Layers2,
+      },
+      {
+        description: "Containers",
+        url: "/containers",
+        default_icon: Box,
+      },
+    ],
   },
 ];
 
-const CompanyAdmin: SidebarItemType[] = [
+const Manager: SidebarData[] = [
   {
-    description: "Dashboard",
-    url: "/dashboard",
-    default_icon: LayoutDashboard,
-  },
-  {
-    description: "Coletas",
-    url: "/collect",
-    default_icon: TruckElectric,
-  },
-  {
-    description: "Armazenamento",
-    url: "/storage",
-    default_icon: Boxes,
+    title: "Gerência",
+    itens: [
+      {
+        description: "Relatórios",
+        url: "/manager/reports",
+        default_icon: LayoutGrid,
+      },
+    ],
   },
 ];
 
-const Employee: SidebarItemType[] = [
+const Standard: SidebarData[] = [
   {
-    description: "Dashboard",
-    url: "/dashboard",
-    default_icon: LayoutDashboard,
-  },
-  {
-    description: "Coletas",
-    url: "/collect",
-    default_icon: TruckElectric,
-  },
-  {
-    description: "Armazenamento",
-    url: "/storage",
-    default_icon: Boxes,
+    title: "Operacional",
+    itens: [
+      {
+        description: "Dashboard",
+        url: "/dashboard",
+        default_icon: LayoutGrid,
+      },
+    ],
   },
 ];
-export { Superadmin, CompanyAdmin, Employee };
+
+export { SysAdmin, Manager, Standard };
