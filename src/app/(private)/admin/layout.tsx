@@ -4,6 +4,7 @@ import "../../globals.css";
 import { GeistSans } from "geist/font/sans";
 import { auth } from "@/lib/db/auth";
 import { redirect } from "next/navigation";
+import Sidebar from "@/components/sidebar";
 
 export const metadata: Metadata = {
   title: "BioLink - System Admin",
@@ -23,10 +24,17 @@ export default async function RootLayout({
   } else if (session) {
     return (
       <html lang="en" className="scroll-smooth">
-        <body className={GeistSans.className}>{children}</body>
+        <body className={GeistSans.className}>
+          <Sidebar
+            name={session?.user.name}
+            email={session?.user.email}
+            role="SYS_ADMIN"
+          />
+          {children}
+        </body>
       </html>
     );
   } else {
-    redirect("/")
+    redirect("/");
   }
 }
