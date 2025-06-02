@@ -1,4 +1,4 @@
-import { Box, Building2, Layers2, LayoutGrid, LucideIcon, PackageOpen } from "lucide-react";
+import { Box, Building2, Layers2, LayoutGrid, LucideIcon, Map, PackageOpen } from "lucide-react";
 
 export type SidebarItemType = {
   description: string;
@@ -21,14 +21,14 @@ const SysAdmin: SidebarData[] = [
         default_icon: LayoutGrid,
       },
       {
-        description: "Schedule",
+        description: "Agendamentos",
         url: "/schedule",
         default_icon: Layers2,
       },
       {
-        description: "Supplies",
+        description: "Suprimentos",
         url: "/supplies",
-        default_icon: PackageOpen,
+        default_icon: Box,
       },
     ],
   },
@@ -41,14 +41,9 @@ const SysAdmin: SidebarData[] = [
         default_icon: Building2,
       },
       {
-        description: "Schedule",
-        url: "/schedule",
-        default_icon: Layers2,
-      },
-      {
-        description: "Containers",
-        url: "/containers",
-        default_icon: Box,
+        description: "Regiões Atendidas",
+        url: "/coverage-area",
+        default_icon: Map,
       },
     ],
   },
