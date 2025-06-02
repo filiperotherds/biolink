@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { redirect } from "next/navigation";
 
-const SignIn = async () => {
+export default async function Login() {
   
   const session = await auth();
 
@@ -46,5 +46,3 @@ const SignIn = async () => {
     </div>
   )
 }
-
-export default SignIn;

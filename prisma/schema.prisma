@@ -8,10 +8,10 @@ datasource db {
 }
 
 enum CompanyType {
-  EDUCACIONAL
-  RESTAURANTE
-  CONDOMINIO
-  EMPRESA
+  EDUCATIONAL
+  RESTAURANT
+  CONDOMINIUM
+  COMPANY
 }
 
 enum Role {
@@ -50,44 +50,78 @@ enum State {
   TO
 }
 
-model Instituition {
-  id            String       @id @default(cuid())
-  razaoSocial   String
-  cnpj          String       @unique
-  tipo          CompanyType
-  addresses     Adrress[]
-  users         User[]       // Relação 1:N: uma Instituition tem vários usuários
+enum CollectionStatus {
+  PENDING_APPROVAL
+  APPROVED
+  IN_PROGRESS
+  COMPLETED
+  CLOSED
 }
 
-model Adrress {
-  id              String        @id @default(cuid())
-  cep             String
-  street          String
-  number          String
-  city            String
-  state           State
+enum ContainerStatus {
+  AVAILABLE
+  ASSIGNED
+  MAINTENANCE
+}
 
-  instituitionId  String
-  instituition    Instituition  @relation(fields: [instituitionId], references: [id])
+model Institution {
+  id                     String                 @id @default(cuid())
+  businessName           String
+  cnpj                   String                 @unique
+  type                   CompanyType
+
+  addresses              Address[]
+  users                  User[]
+
+  collectionRequests     CollectionRequest[]
+  containerAssignments   ContainerAssignment[]
+
+  createdAt              DateTime               @default(now())
+  updatedAt              DateTime               @updatedAt
+}
+
+model Address {
+  id                     String       @id @default(cuid())
+  zipCode                String
+  street                 String
+  number                 String
+  city                   String
+  state                  State
+
+  institutionId          String
+  institution            Institution  @relation(fields: [institutionId], references: [id])
+
+  // Back-relation: any CollectionRequest that uses this as its pickup address
+  pickupRequests         CollectionRequest[] @relation("PickupAddress")
+
+  createdAt              DateTime     @default(now())
+  updatedAt              DateTime     @updatedAt
 }
 
 model User {
-  id              String          @id @default(cuid())
-  name            String?
-  email           String          @unique
-  password        String?
-  emailVerified   DateTime?
-  image           String?
-  accounts        Account[]
-  sessions        Session[]
-  Authenticator   Authenticator[]
-  role            Role            @default(STANDARD_USER)
+  id                        String                  @id @default(cuid())
+  name                      String?
+  email                     String                  @unique
+  password                  String?
+  emailVerified             DateTime?
+  image                     String?
+  role                      Role                    @default(STANDARD_USER)
 
-  instituitionId  String?
-  instituition    Instituition?    @relation(fields: [instituitionId], references: [id])
+  institutionId             String?
+  institution               Institution?            @relation(fields: [institutionId], references: [id])
 
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
+  accounts                  Account[]
+  sessions                  Session[]
+  authenticators            Authenticator[]
+
+  createdCollectionRequests  CollectionRequest[]   @relation("CreatedCollectionRequests")
+  approvedCollectionRequests CollectionRequest[]   @relation("ApprovedCollectionRequests")
+  closedCollectionRequests   CollectionRequest[]   @relation("ClosedCollectionRequests")
+
+  assignedContainers         ContainerAssignment[] @relation("AssignedContainers")
+
+  createdAt                  DateTime               @default(now())
+  updatedAt                  DateTime               @updatedAt
 }
 
 model Account {
@@ -142,4 +176,75 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([userId, credentialID])
+}
+
+/// ------------------------------
+/// Collection Flow Models
+/// ------------------------------
+
+model CollectionRequest {
+  id                String           @id @default(cuid())
+  description       String?
+  createdAt         DateTime         @default(now())
+
+  createdById       String
+  createdBy         User             @relation("CreatedCollectionRequests", fields: [createdById], references: [id])
+
+  institutionId     String
+  institution       Institution      @relation(fields: [institutionId], references: [id])
+
+  status            CollectionStatus @default(PENDING_APPROVAL)
+
+  approvedById      String?
+  approvedBy        User?            @relation("ApprovedCollectionRequests", fields: [approvedById], references: [id])
+  approvedAt        DateTime?
+
+  completedAt       DateTime?
+
+  closedById        String?
+  closedBy          User?            @relation("ClosedCollectionRequests", fields: [closedById], references: [id])
+  closedAt          DateTime?
+
+  pickupAddressId   String?
+  pickupAddress     Address?         @relation("PickupAddress", fields: [pickupAddressId], references: [id])
+
+  @@index([status])
+  @@index([institutionId])
+}
+
+model Container {
+  id            String               @id @default(uuid())
+  name          String
+  volume        Float
+  imagePath     String?
+  status        ContainerStatus      @default(AVAILABLE)
+
+  assignments   ContainerAssignment[]
+
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+
+  @@index([status])
+}
+
+model ContainerAssignment {
+  id               String       @id @default(cuid())
+
+  containerId      String
+  container        Container    @relation(fields: [containerId], references: [id])
+
+  institutionId    String
+  institution      Institution  @relation(fields: [institutionId], references: [id])
+
+  assignedById     String
+  assignedBy       User         @relation("AssignedContainers", fields: [assignedById], references: [id])
+
+  startDate        DateTime     @default(now())
+  endDate          DateTime?
+
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  @@index([containerId])
+  @@index([institutionId])
 }
