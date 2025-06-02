@@ -35,7 +35,7 @@ export async function LoginForm({
             id="email"
             name="email"
             type="email"
-            placeholder="exemplo@biolink.eco.br"
+            placeholder="Email"
             required
           />
         </div>
@@ -49,7 +49,7 @@ export async function LoginForm({
               Esqueceu a senha?
             </a>
           </div>
-          <Input id="password" name="password" type="password" required />
+          <Input id="password" name="password" type="password" placeholder="Senha" required />
         </div>
         <Button type="submit" className="w-full h-9 cursor-pointer">
           Entrar
