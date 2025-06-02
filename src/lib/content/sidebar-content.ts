@@ -22,12 +22,12 @@ const SysAdmin: SidebarData[] = [
       },
       {
         description: "Agendamentos",
-        url: "/schedule",
+        url: "/admin/schedule",
         default_icon: Layers2,
       },
       {
         description: "Suprimentos",
-        url: "/supplies",
+        url: "/admin/supplies",
         default_icon: Box,
       },
     ],
@@ -37,12 +37,12 @@ const SysAdmin: SidebarData[] = [
     itens: [
       {
         description: "Instituições",
-        url: "/institutions",
+        url: "/admin/institutions",
         default_icon: Building2,
       },
       {
         description: "Regiões Atendidas",
-        url: "/coverage-area",
+        url: "/admin/coverage-area",
         default_icon: Map,
       },
     ],
