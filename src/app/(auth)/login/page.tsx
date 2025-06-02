@@ -1,6 +1,6 @@
 
 import { LoginForm } from "@/components/login-form"
-import { auth } from "@/lib/auth";
+import { auth } from "@/lib/db/auth";
 import Image from "next/image"
 import Link from "next/link"
 import { redirect } from "next/navigation";

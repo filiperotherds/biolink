@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { auth } from "@/lib/auth";
+import { auth } from "@/lib/db/auth";
 import Sidebar from "@/components/sidebar";
 export default async function AdminLayout() {
   const session = await auth();

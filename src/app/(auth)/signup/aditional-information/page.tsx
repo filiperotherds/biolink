@@ -1,12 +1,12 @@
-import { signUp } from "@/lib/actions";
+import { signUp } from "@/lib/db/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { auth } from "@/lib/auth";
+import { auth } from "@/lib/db/auth";
 import { BadgeCheck } from "lucide-react";
 
-const SignUp = async () => {
+const AditionalInformation = async () => {
   const session = await auth();
   if (session) redirect("/");
 
@@ -86,4 +86,4 @@ const SignUp = async () => {
   );
 };
 
-export default SignUp;
+export default AditionalInformation;

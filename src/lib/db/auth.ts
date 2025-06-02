@@ -5,7 +5,7 @@ import db from "./db";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { schema } from "@/lib/schema";
+import { schema } from "@/lib/db/schema";
 
 const adapter = PrismaAdapter(db);
 

@@ -1,28 +1,26 @@
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { signIn } from "@/lib/auth"
-import { executeAction } from "@/lib/executeAction"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { signIn } from "@/lib/db/auth";
+import { executeAction } from "@/lib/db/executeAction";
 
 export async function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
-
   return (
     <form
       className={cn("flex flex-col gap-6", className)}
       {...props}
-      action={ async (formData: FormData) => {
-          "use server";
-          await executeAction({
-            actionFn: async () => {
-              await signIn('credentials', formData)
-            }
-          })
-        }
-      }
+      action={async (formData: FormData) => {
+        "use server";
+        await executeAction({
+          actionFn: async () => {
+            await signIn("credentials", formData);
+          },
+        });
+      }}
     >
       <div className="flex flex-col items-center gap-2 text-center">
         <h1 className="text-2xl font-bold">Entre com sua conta</h1>
@@ -33,7 +31,13 @@ export async function LoginForm({
       <div className="grid gap-6">
         <div className="grid gap-3">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" name="email" type="email" placeholder="exemplo@biolink.eco.br" required />
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="exemplo@biolink.eco.br"
+            required
+          />
         </div>
         <div className="grid gap-3">
           <div className="flex items-center">
@@ -58,5 +62,5 @@ export async function LoginForm({
         </a>
       </div>
     </form>
-  )
+  );
 }
