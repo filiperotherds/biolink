@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { signUp } from "@/lib/db/actions";
 import Image from "next/image";
 import { signIn } from "@/lib/db/auth";
+import Link from "next/link";
 
 export function SignupForm({
   className,
@@ -27,7 +28,7 @@ export function SignupForm({
       >
         <div className="flex flex-col gap-6">
           <div className="flex flex-col items-center gap-2">
-            <a
+            <Link
               href="/"
               className="flex flex-col items-center gap-2 font-medium"
             >
@@ -41,15 +42,15 @@ export function SignupForm({
                   />
                 </div>
               </div>
-            </a>
+            </Link>
             <h1 className="text-xl font-extrabold text-zinc-800">
               Bem Vindo a Biolink
             </h1>
             <div className="text-center text-sm">
               Já possui uma conta?{" "}
-              <a href="/login" className="underline underline-offset-4">
+              <Link href="/login" className="underline underline-offset-4">
                 Entrar
-              </a>
+              </Link>
             </div>
           </div>
           <div className="flex flex-col gap-6">
@@ -88,10 +89,10 @@ export function SignupForm({
           </div>
         </div>
       </form>
-      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+      <div className="text-muted-foreground text-center text-xs text-balance">
         Ao clicar em continuar, você concorda com nossos{" "}
-        <a href="/">Termos de Serviço</a> e nossa{" "}
-        <a href="/">Política de Privacidade</a>.
+        <Link href="/" className="underline">Termos de Serviço</Link> e nossa{" "}
+        <Link href="/" className="underline">Política de Privacidade</Link>.
       </div>
     </div>
   );

@@ -2,9 +2,9 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { signUp } from "@/lib/db/actions";
 import { auth } from "@/lib/db/auth";
 import { createInstitution } from "@/modules/institution/actions";
+import Link from "next/link";
 
 const session = await auth();
 const firstName = session?.user.name.split(" ")[0];
@@ -20,6 +20,8 @@ export function InstitutionForm({
           "use server";
 
           const res = await createInstitution(formData);
+          console.log(res);
+          // adicionar lógica para redirecionamento após criação da Instituição
         }}
       >
         <div className="flex flex-col gap-6">
@@ -29,9 +31,9 @@ export function InstitutionForm({
             </h1>
             <div className="text-center text-sm">
               Já possui uma conta?{" "}
-              <a href="/login" className="underline underline-offset-4">
+              <Link href="/login" className="underline underline-offset-4">
                 Entrar
-              </a>
+              </Link>
             </div>
           </div>
           <div className="flex flex-col gap-6">
@@ -70,10 +72,10 @@ export function InstitutionForm({
           </div>
         </div>
       </form>
-      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+      <div className="text-muted-foreground text-center text-xs text-balance">
         Ao clicar em continuar, você concorda com nossos{" "}
-        <a href="/">Termos de Serviço</a> e nossa{" "}
-        <a href="/">Política de Privacidade</a>.
+        <Link href="/" className="underline">Termos de Serviço</Link> e nossa{" "}
+        <Link href="/" className="underline">Política de Privacidade</Link>.
       </div>
     </div>
   );

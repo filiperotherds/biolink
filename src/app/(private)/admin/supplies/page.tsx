@@ -1,8 +1,3 @@
-
 export default function Supplies() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return <div></div>;
 }
