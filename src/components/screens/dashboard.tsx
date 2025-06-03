@@ -14,10 +14,11 @@ import { useRouter } from "next/navigation";
 import { InstitutionService } from "@/modules/institution/service/InstitutionService";
 import { auth } from "@/lib/db/auth";
 
-const router = useRouter();
-function handleNavigate(path: string) {
-  router.push(path);
-}
+const institutionService = new InstitutionService();
+
+const session = await auth();
+const institutionId = session?.user.institutionId;
+const institution = await institutionService.getById(institutionId);
 
 function SysAdminDashboard() {
   return (
@@ -136,12 +137,11 @@ function SysAdminDashboard() {
   );
 }
 
-async function InstitutionDashboard() {
-  const institutionService = new InstitutionService();
-
-  const session = await auth();
-  const institutionId = session?.user.institutionId;
-  const institution = await institutionService.getById(institutionId);
+function InstitutionDashboard() {
+  const router = useRouter();
+  function handleNavigate(path: string) {
+    router.push(path);
+  }
 
   return (
     <div className="w-full max-w-4xl flex flex-col items-center justify-start gap-16">

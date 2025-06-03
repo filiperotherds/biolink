@@ -10,10 +10,6 @@ interface CnpjLookupProps {
   razaoName?: string;
 }
 
-interface Erro {
-  message?: string;
-}
-
 export default function CnpjLookup({
   cnpjName = "cnpj",
   razaoName = "businessName",
