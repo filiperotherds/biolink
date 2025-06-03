@@ -14,13 +14,13 @@ import {
 import CnpjLookup from "./CnpjLookup";
 import { redirect } from "next/navigation";
 
-const session = await auth();
-const firstName = session?.user.name.split(" ")[0];
-
-export function InstitutionForm({
+export async function InstitutionForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const session = await auth();
+  const firstName = session?.user.name.split(" ")[0];
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <form
