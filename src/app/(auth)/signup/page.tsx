@@ -8,7 +8,7 @@ export default async function SignUp() {
   if (session?.user.institutionId === null || "") {
     redirect("/create-institution");
   } else if (session) {
-    redirect("/dashboard");
+    redirect("/institution/dashboard");
   } else {
     return (
       <div className="bg-background flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">

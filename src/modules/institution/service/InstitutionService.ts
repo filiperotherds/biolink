@@ -6,7 +6,7 @@ import db from "@/lib/db/db";
 import { Role } from "@prisma/client";
 
 export class InstitutionService {
-  private instRepo = new InstitutionRepository();
+  private repository = new InstitutionRepository();
 
   /**
    * Cria uma nova instituição e associa ao usuário autenticado.
@@ -20,7 +20,7 @@ export class InstitutionService {
     userId: string
   ): Promise<Institution> {
     // 1. Verificar se já existe instituição com mesmo CNPJ
-    const existing = await this.instRepo.findByCnpj(dto.cnpj);
+    const existing = await this.repository.findByCnpj(dto.cnpj);
     if (existing) {
       redirect("/invalid-cnpj");
     }
@@ -30,7 +30,7 @@ export class InstitutionService {
       cnpj: dto.cnpj,
       type: dto.type,
     });
-    const createdInst = await this.instRepo.create(newInstitution);
+    const createdInst = await this.repository.create(newInstitution);
 
     await db.user.update({
       where: { id: userId },
@@ -41,5 +41,13 @@ export class InstitutionService {
     });
 
     return createdInst;
+  }
+
+  public async getById(id: string) {
+    const institution = await this.repository.findById(id);
+    if (!institution) {
+      return null;
+    }
+    return institution;
   }
 }

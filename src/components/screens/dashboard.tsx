@@ -1,5 +1,19 @@
-import { TrendingUp } from "lucide-react";
+"use client";
+
+import {
+  Droplets,
+  Earth,
+  ExternalLink,
+  TrendingUp,
+  Volleyball,
+} from "lucide-react";
 import { Badge } from "../ui/badge";
+import Link from "next/link";
+import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
+import { InstitutionService } from "@/modules/institution/service/InstitutionService";
+import { auth } from "@/lib/db/auth";
+import { InstitutionRepository } from "@/modules/institution/repository/InstitutionRepository";
 
 function SysAdminDashboard() {
   return (
@@ -118,4 +132,117 @@ function SysAdminDashboard() {
   );
 }
 
-export { SysAdminDashboard };
+async function InstitutionDashboard() {
+  const router = useRouter();
+  const institutionService = new InstitutionService();
+
+  function handleNavigate(path: string) {
+    router.push(path);
+  }
+
+  const session = await auth();
+  const institutionId = session?.user.institutionId;
+  const institution = await institutionService.getById(institutionId);
+
+  return (
+    <div className="w-full max-w-4xl flex flex-col items-center justify-start gap-16">
+      <div className="h-24 w-full p-4 flex flex-row items-center justify-between rounded-2xl bg-gradient-to-br from-sky-400 to-emerald-300">
+        <div className="h-full flex flex-col gap-1 items-start justify-start">
+          <span className="text-sm font-semibold text-white">
+            {institution?.businessName}
+          </span>
+          <span className="text-sm text-white">
+            {institution?.cnpj.replace(
+              /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/,
+              "$1.$2.$3/$4-$5"
+            )}
+          </span>
+        </div>
+        <div className="h-full flex flex-col items-end justify-end">
+          <Link
+            target="_blank"
+            href="https://instagram.com/biolink.eco"
+            className="group h-7 px-2 flex items-center justify-center bg-white rounded-[8px]"
+          >
+            <div className="flex flex-row items-center justify-center gap-2">
+              <Volleyball size={16} className="text-sky-400" />
+              <div className="flex flex-row items-center justify-center gap-1">
+                <span className="text-xs group-hover:underline">
+                  Conheça as atividades que promovemos
+                </span>
+                <ExternalLink size={12} strokeWidth={2.5} />
+              </div>
+            </div>
+          </Link>
+        </div>
+      </div>
+
+      <div className="w-full max-w-2xl gap-4 flex flex-col items-center justify-start">
+        <h1 className="text-4xl text-center font-bold">
+          Gerencie seus Resultados
+        </h1>
+        <p className="text-base text-center">
+          Controle seus resultados de forma prática e eficiente, acompanhando
+          seu progresso em tempo real. Tenha total controle para tomar decisões
+          rápidas e eficientes.
+        </p>
+        <div className="flex flex-row gap-4 items-center justify-center">
+          <Button
+            variant="default"
+            size="sm"
+            className="bg-zinc-800 hover:bg-zinc-700 cursor-pointer"
+            onClick={() => handleNavigate("/institution/colects")}
+          >
+            Minhas Coletas
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            className="cursor-pointer"
+            onClick={() => handleNavigate("/institution/containers")}
+          >
+            Ver Recipientes
+          </Button>
+        </div>
+      </div>
+
+      <div className="w-full flex flex-row items-center gap-2">
+        <div className="relative flex-1 h-64 p-4 border rounded-2xl flex flex-col items-start justify-between">
+          <div className="absolute top-4 right-4">
+            <Badge variant="outline">
+              <div className="flex flex-row items-center gap-1">
+                <Droplets size={14} strokeWidth={2.3} />
+                <span>Volume Coletado</span>
+              </div>
+            </Badge>
+          </div>
+
+          <div className="flex flex-col items-start justify-start gap-1">
+            <span></span>
+          </div>
+
+          <div></div>
+        </div>
+
+        <div className="relative flex-1 h-64 p-4 border rounded-2xl flex flex-col items-start justify-between">
+          <div className="absolute top-4 right-4">
+            <Badge variant="outline">
+              <div className="flex flex-row items-center gap-1">
+                <Earth size={14} strokeWidth={2.3} />
+                <span>Impacto Ambiental</span>
+              </div>
+            </Badge>
+          </div>
+
+          <div className="flex flex-col items-start justify-start gap-1">
+            <span></span>
+          </div>
+
+          <div></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export { SysAdminDashboard, InstitutionDashboard };

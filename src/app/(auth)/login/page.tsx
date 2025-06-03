@@ -12,7 +12,7 @@ export default async function Login() {
   if (session?.user.role === "SYS_ADMIN") {
     redirect("/admin/dashboard");
   } else if (session) {
-    redirect("/dashboard")
+    redirect("/institution/dashboard")
   }
 
   return (

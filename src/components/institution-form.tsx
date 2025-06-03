@@ -8,12 +8,10 @@ import {
   Select,
   SelectContent,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
 import CnpjLookup from "./CnpjLookup";
-import { CreateInstitutionSchema } from "@/modules/institution/schema/InstitutionSchema";
 import { redirect } from "next/navigation";
 
 const session = await auth();
@@ -30,8 +28,8 @@ export function InstitutionForm({
           "use server";
 
           const res = await createInstitution(formData);
-          if(res) {
-            redirect("/dashboard");
+          if (res) {
+            redirect("/institution/dashboard");
           }
           // adicionar lógica para redirecionamento após criação da Instituição
         }}

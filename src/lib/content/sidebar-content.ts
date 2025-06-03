@@ -1,4 +1,4 @@
-import { Box, Building2, Layers2, LayoutGrid, LucideIcon, Map } from "lucide-react";
+import { Box, Building2, Layers2, LayoutGrid, LucideIcon, Map, Truck, Users } from "lucide-react";
 
 export type SidebarItemType = {
   description: string;
@@ -51,12 +51,32 @@ const SysAdmin: SidebarData[] = [
 
 const Manager: SidebarData[] = [
   {
-    title: "Gerência",
+    title: "Operacional",
     itens: [
       {
-        description: "Relatórios",
-        url: "/manager/reports",
+        description: "Dashboard",
+        url: "/institution/dashboard",
         default_icon: LayoutGrid,
+      },
+      {
+        description: "Coletas",
+        url: "/institution/colects",
+        default_icon: Truck,
+      },
+      {
+        description: "Recipientes",
+        url: "/institution/containers",
+        default_icon: Box,
+      },
+    ],
+  },
+  {
+    title: "Administrativo",
+    itens: [
+      {
+        description: "Usuários",
+        url: "/institution/users",
+        default_icon: Users,
       },
     ],
   },

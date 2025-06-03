@@ -35,4 +35,17 @@ export class InstitutionRepository {
       updatedAt: found.updatedAt,
     });
   }
+
+  public async findById(id: string): Promise<Institution | null> {
+    const found = await db.institution.findUnique({ where: { id: id } });
+    if (!found) return null;
+    return new Institution({
+      id: found.id,
+      businessName: found.businessName,
+      cnpj: found.cnpj,
+      type: found.type,
+      createdAt: found.createdAt,
+      updatedAt: found.updatedAt,
+    });
+  }
 }
