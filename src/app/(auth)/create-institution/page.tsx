@@ -1,6 +1,7 @@
 import { InstitutionForm } from "@/components/institution-form";
 import { auth } from "@/lib/db/auth";
 import { redirect } from "next/navigation";
+import { toast } from "sonner";
 
 export default async function CreateInstitution() {
   const session = await auth();
@@ -11,7 +12,7 @@ export default async function CreateInstitution() {
     return (
       <div className="bg-background flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
         <div className="w-full max-w-sm">
-            <InstitutionForm/>
+          <InstitutionForm />
         </div>
       </div>
     );

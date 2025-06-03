@@ -24,7 +24,7 @@ export default async function RootLayout({
   } else if (session) {
     return (
       <html lang="en" className="scroll-smooth">
-        <body className={GeistSans.className}>
+        <body className={`${GeistSans.className} w-screen h-screen flex flex-row items-center justify-center`}>
           <Sidebar
             name={session?.user.name}
             email={session?.user.email}

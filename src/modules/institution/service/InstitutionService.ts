@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { CreateInstitutionDto } from "../dto/CreateInstitutionDto";
 import { Institution } from "../entity/Institution";
 import { InstitutionRepository } from "../repository/InstitutionRepository";
@@ -21,7 +22,7 @@ export class InstitutionService {
     // 1. Verificar se já existe instituição com mesmo CNPJ
     const existing = await this.instRepo.findByCnpj(dto.cnpj);
     if (existing) {
-      throw new Error("Já existe uma instituição cadastrada com esse CNPJ.");
+      redirect("/invalid-cnpj");
     }
 
     const newInstitution = new Institution({

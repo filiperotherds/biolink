@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 export default async function SignUp() {
   const session = await auth();
 
-  if (!session?.user.institutionId) {
+  if (session?.user.institutionId === null || "") {
     redirect("/create-institution");
   } else if (session) {
     redirect("/dashboard");
