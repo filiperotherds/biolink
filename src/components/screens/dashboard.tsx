@@ -13,12 +13,7 @@ import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import { InstitutionService } from "@/modules/institution/service/InstitutionService";
 import { auth } from "@/lib/db/auth";
-
-const institutionService = new InstitutionService();
-
-const session = await auth();
-const institutionId = session?.user.institutionId;
-const institution = await institutionService.getById(institutionId);
+import DashboardButtons from "../dashboard-buttons";
 
 function SysAdminDashboard() {
   return (
@@ -137,11 +132,12 @@ function SysAdminDashboard() {
   );
 }
 
-function InstitutionDashboard() {
-  const router = useRouter();
-  function handleNavigate(path: string) {
-    router.push(path);
-  }
+async function InstitutionDashboard() {
+  const institutionService = new InstitutionService();
+
+  const session = await auth();
+  const institutionId = session?.user.institutionId;
+  const institution = await institutionService.getById(institutionId);
 
   return (
     <div className="w-full max-w-4xl flex flex-col items-center justify-start gap-16">
@@ -176,34 +172,7 @@ function InstitutionDashboard() {
         </div>
       </div>
 
-      <div className="w-full max-w-2xl gap-4 flex flex-col items-center justify-start">
-        <h1 className="text-4xl text-center font-bold">
-          Gerencie seus Resultados
-        </h1>
-        <p className="text-base text-center">
-          Controle seus resultados de forma prática e eficiente, acompanhando
-          seu progresso em tempo real. Tenha total controle para tomar decisões
-          rápidas e eficientes.
-        </p>
-        <div className="flex flex-row gap-4 items-center justify-center">
-          <Button
-            variant="default"
-            size="sm"
-            className="bg-zinc-800 hover:bg-zinc-700 cursor-pointer"
-            onClick={() => handleNavigate("/institution/colects")}
-          >
-            Minhas Coletas
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            className="cursor-pointer"
-            onClick={() => handleNavigate("/institution/containers")}
-          >
-            Ver Recipientes
-          </Button>
-        </div>
-      </div>
+      <DashboardButtons />
 
       <div className="w-full flex flex-row items-center gap-2">
         <div className="relative flex-1 h-64 p-4 border rounded-2xl flex flex-col items-start justify-between">
