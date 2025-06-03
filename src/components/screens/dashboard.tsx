@@ -13,7 +13,11 @@ import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import { InstitutionService } from "@/modules/institution/service/InstitutionService";
 import { auth } from "@/lib/db/auth";
-import { InstitutionRepository } from "@/modules/institution/repository/InstitutionRepository";
+
+const router = useRouter();
+function handleNavigate(path: string) {
+  router.push(path);
+}
 
 function SysAdminDashboard() {
   return (
@@ -133,12 +137,7 @@ function SysAdminDashboard() {
 }
 
 async function InstitutionDashboard() {
-  const router = useRouter();
   const institutionService = new InstitutionService();
-
-  function handleNavigate(path: string) {
-    router.push(path);
-  }
 
   const session = await auth();
   const institutionId = session?.user.institutionId;

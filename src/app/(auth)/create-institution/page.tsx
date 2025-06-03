@@ -1,7 +1,6 @@
 import { InstitutionForm } from "@/components/institution-form";
 import { auth } from "@/lib/db/auth";
 import { redirect } from "next/navigation";
-import { toast } from "sonner";
 
 export default async function CreateInstitution() {
   const session = await auth();

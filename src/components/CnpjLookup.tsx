@@ -10,7 +10,14 @@ interface CnpjLookupProps {
   razaoName?: string;
 }
 
-export default function CnpjLookup({ cnpjName = "cnpj", razaoName = "businessName" }: CnpjLookupProps) {
+interface Erro {
+  message?: string;
+}
+
+export default function CnpjLookup({
+  cnpjName = "cnpj",
+  razaoName = "businessName",
+}: CnpjLookupProps) {
   const [cnpj, setCnpj] = useState("");
   const [razaoSocial, setRazaoSocial] = useState("");
   const [loading, setLoading] = useState(false);
@@ -38,8 +45,10 @@ export default function CnpjLookup({ cnpjName = "cnpj", razaoName = "businessNam
         if (!res.ok) throw new Error("CNPJ não encontrado");
         const data = await res.json();
         setRazaoSocial(data.razao_social || "");
-      } catch (error: any) {
-        setErro(error.message || "Erro ao buscar razão social");
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setErro(error.message || "Erro ao buscar razão social");
+        }
         setRazaoSocial("");
       } finally {
         setLoading(false);
@@ -60,8 +69,16 @@ export default function CnpjLookup({ cnpjName = "cnpj", razaoName = "businessNam
         placeholder="Digite o CNPJ"
         required
       />
-      {loading && <span className="absolute -top-1.5 right-0.5 text-sm">Buscando razão social...</span>}
-      {erro && <span className="absolute -top-1.5 right-0.5 text-red-600 text-sm">{erro}</span>}
+      {loading && (
+        <span className="absolute -top-1.5 right-0.5 text-sm">
+          Buscando razão social...
+        </span>
+      )}
+      {erro && (
+        <span className="absolute -top-1.5 right-0.5 text-red-600 text-sm">
+          {erro}
+        </span>
+      )}
 
       <Label htmlFor={razaoName}>Razão Social</Label>
       <Input
