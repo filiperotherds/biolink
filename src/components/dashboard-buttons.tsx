@@ -14,7 +14,7 @@ export default function DashboardButtons() {
       <h1 className="text-4xl text-center font-bold">
         Gerencie seus Resultados
       </h1>
-      <p className="text-base text-center">
+      <p className="text-base text-center text-muted-foreground">
         Controle seus resultados de forma prática e eficiente, acompanhando seu
         progresso em tempo real. Tenha total controle para tomar decisões
         rápidas e eficientes.
