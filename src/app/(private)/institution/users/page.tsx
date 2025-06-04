@@ -10,7 +10,6 @@ import {
 
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
   SheetHeader,
@@ -147,12 +146,8 @@ export default async function UsersPage() {
             {users.map((user) => (
               <TableRow key={user.id}>
                 <TableCell>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="cursor-pointer shadow-none"
-                  >
-                    <EllipsisVertical />
+                  <Button size="icon" variant="ghost">
+                    <EllipsisVertical/>
                   </Button>
                 </TableCell>
                 <TableCell>
@@ -162,7 +157,9 @@ export default async function UsersPage() {
                 <TableCell>
                   <Badge variant="outline">
                     <span className="text-muted-foreground">
-                      {user.role === "MANAGER_USER" ? "Administrador" : "Colaborador"}
+                      {user.role === "MANAGER_USER"
+                        ? "Administrador"
+                        : "Colaborador"}
                     </span>
                   </Badge>
                 </TableCell>

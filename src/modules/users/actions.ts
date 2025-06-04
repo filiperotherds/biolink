@@ -30,6 +30,20 @@ const createUser = async (formData: FormData, institutionId: string) => {
   });
 };
 
+const deleteUser = async (userId: string) => {
+  try {
+    await db.user.delete({
+      where: {
+        id: userId,
+      },
+    });
+    return { success: true };
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    return { success: false, error: "Failed to delete user" };
+  }
+};
+
 const getUserByInstitutionId = async (institutionId: string) => {
   const users = await db.user.findMany({
     where: { institutionId },
@@ -38,4 +52,4 @@ const getUserByInstitutionId = async (institutionId: string) => {
   return users;
 };
 
-export { createUser, getUserByInstitutionId };
+export { createUser, deleteUser, getUserByInstitutionId };
