@@ -73,7 +73,7 @@ model Institution {
   addresses              Address[]
   users                  User[]
 
-  collectionRequests     CollectionRequest[]
+  collectionRequests     Collection[]
   containerAssignments   ContainerAssignment[]
 
   createdAt              DateTime               @default(now())
@@ -91,8 +91,8 @@ model Address {
   institutionId          String
   institution            Institution  @relation(fields: [institutionId], references: [id])
 
-  // Back-relation: any CollectionRequest that uses this as its pickup address
-  pickupRequests         CollectionRequest[] @relation("PickupAddress")
+  // Back-relation: any Collection that uses this as its pickup address
+  pickupRequests         Collection[] @relation("PickupAddress")
 
   createdAt              DateTime     @default(now())
   updatedAt              DateTime     @updatedAt
@@ -114,9 +114,9 @@ model User {
   sessions                  Session[]
   authenticators            Authenticator[]
 
-  createdCollectionRequests  CollectionRequest[]   @relation("CreatedCollectionRequests")
-  approvedCollectionRequests CollectionRequest[]   @relation("ApprovedCollectionRequests")
-  closedCollectionRequests   CollectionRequest[]   @relation("ClosedCollectionRequests")
+  createdCollectionRequests  Collection[]   @relation("CreatedCollectionRequests")
+  approvedCollectionRequests Collection[]   @relation("ApprovedCollectionRequests")
+  closedCollectionRequests   Collection[]   @relation("ClosedCollectionRequests")
 
   assignedContainers         ContainerAssignment[] @relation("AssignedContainers")
 
@@ -182,7 +182,7 @@ model Authenticator {
 /// Collection Flow Models
 /// ------------------------------
 
-model CollectionRequest {
+model Collection {
   id                String           @id @default(cuid())
   description       String?
   createdAt         DateTime         @default(now())
@@ -207,6 +207,8 @@ model CollectionRequest {
 
   pickupAddressId   String?
   pickupAddress     Address?         @relation("PickupAddress", fields: [pickupAddressId], references: [id])
+
+  volumeCollected   Float?
 
   @@index([status])
   @@index([institutionId])

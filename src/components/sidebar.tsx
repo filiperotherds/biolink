@@ -101,7 +101,7 @@ export default function Sidebar({ name, email, role }: SidebarUserProps) {
 
           {/* Botão de opções */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="w-7 h-7 mr-2 flex items-center justify-center focus:outline-none rounded-md hover:bg-zinc-100 transition-all cursor-pointer">
+            <DropdownMenuTrigger className="w-7 h-7 mr-2 flex items-center justify-center focus:outline-none rounded-md hover:bg-zinc-100 transition-all">
               <ChevronDown
                 size={16}
                 strokeWidth={2.5}

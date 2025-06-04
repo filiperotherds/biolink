@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Droplets,
   Earth,
@@ -173,7 +171,7 @@ async function InstitutionDashboard() {
       <DashboardButtons />
 
       <div className="w-full flex flex-row items-center gap-2">
-        <div className="relative flex-1 h-64 p-4 border rounded-2xl flex flex-col items-start justify-between">
+        <div className="relative flex-1 h-60 p-4 border rounded-2xl flex flex-col items-start justify-between">
           <div className="absolute top-4 right-4">
             <Badge variant="outline">
               <div className="flex flex-row items-center gap-1">
@@ -183,14 +181,22 @@ async function InstitutionDashboard() {
             </Badge>
           </div>
 
-          <div className="flex flex-col items-start justify-start gap-1">
-            <span></span>
+          <div className="flex flex-col items-start justify-start gap-2">
+            <span className="text-xs text-muted-foreground">
+              Total em Descartes
+            </span>
+            <h1 className="text-3xl font-bold">
+              {197.34} <span className="text-lg">litros</span>
+            </h1>
           </div>
 
-          <div></div>
+          <div className="flex flex-col items-start justify-start gap-2">
+            <span className="text-xs font-semibold">Média de 28.2 litros</span>
+            <span className="text-xs text-muted-foreground">Obtidos em um total de 7 coletas</span>
+          </div>
         </div>
 
-        <div className="relative flex-1 h-64 p-4 border rounded-2xl flex flex-col items-start justify-between">
+        <div className="relative flex-1 h-60 p-4 border rounded-2xl flex flex-col items-start justify-between">
           <div className="absolute top-4 right-4">
             <Badge variant="outline">
               <div className="flex flex-row items-center gap-1">
