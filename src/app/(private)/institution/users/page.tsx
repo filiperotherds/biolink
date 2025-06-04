@@ -26,7 +26,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { createUser, getUserByInstitutionId } from "@/modules/users/actions";
+import { createUser, getUserByInstitutionId } from "@/modules/user/actions";
 import { auth } from "@/lib/db/auth";
 import {
   Select,

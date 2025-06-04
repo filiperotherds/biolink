@@ -10,7 +10,7 @@ import Link from "next/link";
 import { InstitutionService } from "@/modules/institution/service/InstitutionService";
 import { auth } from "@/lib/db/auth";
 import DashboardButtons from "../dashboard-buttons";
-import { CollectionService } from "@/modules/collection/service/collectionService";
+import { getCollectionsByInstitutionId } from "@/modules/collection/actions";
 
 function SysAdminDashboard() {
   return (
@@ -131,13 +131,12 @@ function SysAdminDashboard() {
 
 async function InstitutionDashboard() {
   const institutionService = new InstitutionService();
-  const collectionService = new CollectionService();
 
   const session = await auth();
   const institutionId = session?.user.institutionId;
   const institution = await institutionService.getById(institutionId);
 
-  const collections = await collectionService.getByInstitutionId(institutionId);
+  const collections = await getCollectionsByInstitutionId(institutionId);
 
   async function getTotalVolume() {
     if (collections.length === 0) {
@@ -207,7 +206,8 @@ async function InstitutionDashboard() {
               Total em Descartes
             </span>
             <h1 className="text-3xl font-bold">
-              {totalVolume.toPrecision(2)} <span className="text-lg">litros</span>
+              {totalVolume.toPrecision(2)}{" "}
+              <span className="text-lg">litros</span>
             </h1>
           </div>
 
@@ -238,7 +238,8 @@ async function InstitutionDashboard() {
               Emissões de CO² reduzidas
             </span>
             <h1 className="text-3xl font-bold">
-              {emissoesReduzidas.toPrecision(2)} <span className="text-lg">kg CO²</span>
+              {emissoesReduzidas.toPrecision(2)}{" "}
+              <span className="text-lg">kg CO²</span>
             </h1>
           </div>
 
@@ -247,7 +248,8 @@ async function InstitutionDashboard() {
               Contaminação hídrica evitada
             </span>
             <h1 className="text-3xl font-bold">
-              {contaminacaoReduzida.toPrecision(2)} <span className="text-lg">litros de água</span>
+              {contaminacaoReduzida.toPrecision(2)}{" "}
+              <span className="text-lg">litros de água</span>
             </h1>
           </div>
         </div>

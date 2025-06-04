@@ -1,4 +1,4 @@
-import { schema } from "@/modules/users/schema";
+import { schema } from "@/modules/user/schema";
 import db from "@/lib/db";
 import { executeAction } from "@/lib/executeAction";
 
