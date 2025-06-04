@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signIn } from "@/lib/db/auth";
-import { executeAction } from "@/lib/db/executeAction";
+import { executeAction } from "@/lib/executeAction";
 
 export async function LoginForm({
   className,
@@ -49,7 +49,13 @@ export async function LoginForm({
               Esqueceu a senha?
             </a>
           </div>
-          <Input id="password" name="password" type="password" placeholder="Senha" required />
+          <Input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Senha"
+            required
+          />
         </div>
         <Button type="submit" className="w-full h-9 cursor-pointer">
           Entrar

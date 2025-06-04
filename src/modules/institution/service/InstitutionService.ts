@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { CreateInstitutionDto } from "../dto/CreateInstitutionDto";
 import { Institution } from "../entity/Institution";
 import { InstitutionRepository } from "../repository/InstitutionRepository";
-import db from "@/lib/db/db";
+import db from "@/lib/db";
 import { Role } from "@prisma/client";
 
 export class InstitutionService {

@@ -10,6 +10,7 @@ import Link from "next/link";
 import { InstitutionService } from "@/modules/institution/service/InstitutionService";
 import { auth } from "@/lib/db/auth";
 import DashboardButtons from "../dashboard-buttons";
+import { CollectionService } from "@/modules/collection/service/collectionService";
 
 function SysAdminDashboard() {
   return (
@@ -130,10 +131,27 @@ function SysAdminDashboard() {
 
 async function InstitutionDashboard() {
   const institutionService = new InstitutionService();
+  const collectionService = new CollectionService();
 
   const session = await auth();
   const institutionId = session?.user.institutionId;
   const institution = await institutionService.getById(institutionId);
+
+  const collections = await collectionService.getByInstitutionId(institutionId);
+
+  async function getTotalVolume() {
+    if (collections.length === 0) {
+      return 0;
+    }
+
+    const totalVolume = collections.reduce((acc, collection) => {
+      return acc + (collection.volumeCollected || 0);
+    }, 0);
+
+    return totalVolume;
+  }
+
+  const totalVolume = await getTotalVolume();
 
   return (
     <div className="w-full max-w-4xl flex flex-col items-center justify-start gap-16">
@@ -186,13 +204,13 @@ async function InstitutionDashboard() {
               Total em Descartes
             </span>
             <h1 className="text-3xl font-bold">
-              {197.34} <span className="text-lg">litros</span>
+              {totalVolume} <span className="text-lg">litros</span>
             </h1>
           </div>
 
           <div className="flex flex-col items-start justify-start gap-2">
-            <span className="text-xs font-semibold">Média de 28.2 litros</span>
-            <span className="text-xs text-muted-foreground">Obtidos em um total de 7 coletas</span>
+            <span className="text-xs font-semibold">Média de {totalVolume / collections.length !== 0 ? collections.length : 0} litros</span>
+            <span className="text-xs text-muted-foreground">Obtidos em um total de {collections.length} coletas</span>
           </div>
         </div>
 

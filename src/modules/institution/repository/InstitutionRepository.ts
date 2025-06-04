@@ -1,5 +1,5 @@
 import { Institution as PrismaInstitution } from "@prisma/client";
-import db from "@/lib/db/db";
+import db from "@/lib/db";
 import { Institution } from "../entity/Institution";
 
 export class InstitutionRepository {
