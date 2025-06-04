@@ -27,7 +27,7 @@ const SysAdmin: SidebarData[] = [
       },
       {
         description: "Suprimentos",
-        url: "/admin/supplies",
+        url: "/admin/containers",
         default_icon: Box,
       },
     ],
@@ -60,7 +60,7 @@ const Manager: SidebarData[] = [
       },
       {
         description: "Coletas",
-        url: "/institution/colects",
+        url: "/institution/collects",
         default_icon: Truck,
       },
       {

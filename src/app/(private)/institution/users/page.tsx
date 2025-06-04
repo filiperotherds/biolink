@@ -17,7 +17,12 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import { EllipsisVertical, PlusIcon } from "lucide-react";
+import {
+  EllipsisVertical,
+  ExternalLink,
+  PlusIcon,
+  Volleyball,
+} from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -30,15 +35,50 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import Link from "next/link";
+import { InstitutionService } from "@/modules/institution/service/InstitutionService";
 
 export default async function UsersPage() {
+  const institutionService = new InstitutionService();
+
   const session = await auth();
   const institutionId = session?.user?.institutionId;
 
   const users = await getUserByInstitutionId(institutionId);
+  const institution = await institutionService.getById(institutionId);
 
   return (
     <div className="w-full max-w-4xl flex flex-col items-center justify-start gap-8">
+      <div className="h-24 w-full p-4 flex flex-row items-center justify-between rounded-2xl bg-gradient-to-br from-sky-400 to-emerald-300">
+        <div className="h-full flex flex-col gap-1 items-start justify-start">
+          <span className="text-sm font-semibold text-white">
+            {institution?.businessName}
+          </span>
+          <span className="text-sm text-white">
+            {institution?.cnpj.replace(
+              /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/,
+              "$1.$2.$3/$4-$5"
+            )}
+          </span>
+        </div>
+        <div className="h-full flex flex-col items-end justify-end">
+          <Link
+            target="_blank"
+            href="https://instagram.com/biolink.eco"
+            className="group h-7 px-2 flex items-center justify-center bg-white rounded-[8px]"
+          >
+            <div className="flex flex-row items-center justify-center gap-2">
+              <Volleyball size={16} className="text-sky-400" />
+              <div className="flex flex-row items-center justify-center gap-1">
+                <span className="text-xs group-hover:underline">
+                  Conheça as atividades que promovemos
+                </span>
+                <ExternalLink size={12} strokeWidth={2.5} />
+              </div>
+            </div>
+          </Link>
+        </div>
+      </div>
       <div className="w-full flex flex-row items-center justify-between">
         <div className="flex flex-col gap-0.5">
           <h1 className="text-base font-semibold">Usuários</h1>
@@ -147,7 +187,7 @@ export default async function UsersPage() {
               <TableRow key={user.id}>
                 <TableCell>
                   <Button size="icon" variant="ghost">
-                    <EllipsisVertical/>
+                    <EllipsisVertical />
                   </Button>
                 </TableCell>
                 <TableCell>

@@ -153,6 +153,9 @@ async function InstitutionDashboard() {
 
   const totalVolume = await getTotalVolume();
 
+  const emissoesReduzidas = totalVolume * 0.9 * 0.37;
+  const contaminacaoReduzida = totalVolume * 25000;
+
   return (
     <div className="w-full max-w-4xl flex flex-col items-center justify-start gap-16">
       <div className="h-24 w-full p-4 flex flex-row items-center justify-between rounded-2xl bg-gradient-to-br from-sky-400 to-emerald-300">
@@ -204,13 +207,19 @@ async function InstitutionDashboard() {
               Total em Descartes
             </span>
             <h1 className="text-3xl font-bold">
-              {totalVolume} <span className="text-lg">litros</span>
+              {totalVolume.toPrecision(2)} <span className="text-lg">litros</span>
             </h1>
           </div>
 
           <div className="flex flex-col items-start justify-start gap-2">
-            <span className="text-xs font-semibold">Média de {totalVolume / collections.length !== 0 ? collections.length : 0} litros</span>
-            <span className="text-xs text-muted-foreground">Obtidos em um total de {collections.length} coletas</span>
+            <span className="text-xs font-semibold">
+              Média de{" "}
+              {totalVolume / collections.length !== 0 ? collections.length : 0}{" "}
+              litros
+            </span>
+            <span className="text-xs text-muted-foreground">
+              Obtidos em um total de {collections.length} coletas
+            </span>
           </div>
         </div>
 
@@ -224,11 +233,23 @@ async function InstitutionDashboard() {
             </Badge>
           </div>
 
-          <div className="flex flex-col items-start justify-start gap-1">
-            <span></span>
+          <div className="flex flex-col items-start justify-start gap-2">
+            <span className="text-xs text-muted-foreground">
+              Emissões de CO² reduzidas
+            </span>
+            <h1 className="text-3xl font-bold">
+              {emissoesReduzidas.toPrecision(2)} <span className="text-lg">kg CO²</span>
+            </h1>
           </div>
 
-          <div></div>
+          <div className="flex flex-col items-start justify-start gap-2">
+            <span className="text-xs text-muted-foreground">
+              Contaminação hídrica evitada
+            </span>
+            <h1 className="text-3xl font-bold">
+              {contaminacaoReduzida.toPrecision(2)} <span className="text-lg">litros de água</span>
+            </h1>
+          </div>
         </div>
       </div>
     </div>
