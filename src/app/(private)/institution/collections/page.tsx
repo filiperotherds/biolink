@@ -65,9 +65,6 @@ export default function Colects() {
           <CollectionInfoCard />
         </Suspense>
 
-        <div className="col-span-2 row-span-4 col-start-4 row-start-3 bg-zinc-50">
-          3
-        </div>
       </div>
     </div>
   );
