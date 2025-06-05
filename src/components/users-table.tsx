@@ -6,10 +6,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { auth } from "@/lib/db/auth";
 import { getUserByInstitutionId } from "@/modules/user/actions";
 import { Button } from "./ui/button";
-import { EllipsisVertical } from "lucide-react";
+import { Edit, EllipsisVertical, Trash } from "lucide-react";
 import { Badge } from "./ui/badge";
 
 export default async function UsersTable() {
@@ -36,9 +43,27 @@ export default async function UsersTable() {
           {users.map((user) => (
             <TableRow key={user.id}>
               <TableCell>
-                <Button size="icon" variant="ghost">
-                  <EllipsisVertical />
-                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button size="icon" variant="ghost">
+                      <EllipsisVertical />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-56" align="start">
+                    <DropdownMenuItem>
+                      Editar
+                      <DropdownMenuShortcut>
+                        <Edit />
+                      </DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      Deletar
+                      <DropdownMenuShortcut>
+                        <Trash className="text-red-600"/>
+                      </DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </TableCell>
               <TableCell>
                 <span className="font-medium">{user.name}</span>

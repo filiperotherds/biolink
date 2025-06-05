@@ -32,16 +32,4 @@ export default async function UsersLayout({
       </div>
     );
   }
-  if (session.user.role === "STANDARD_USER") {
-    return (
-      <div className="h-screen w-screen flex flex-row items-start justify-start">
-        <Sidebar
-          name={session.user.name}
-          email={session.user.email}
-          role="STANDARD"
-        />
-        <span>Standard User Dashboard</span>
-      </div>
-    );
-  }
 }
