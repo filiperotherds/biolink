@@ -1,4 +1,4 @@
-import { Box, Building2, Layers2, LayoutGrid, LucideIcon, Map, Truck, Users } from "lucide-react";
+import { Box, Building2, Layers2, LayoutGrid, LucideIcon, Map, MapPinHouse, Truck, Users } from "lucide-react";
 
 export type SidebarItemType = {
   description: string;
@@ -77,6 +77,11 @@ const Manager: SidebarData[] = [
         description: "Usuários",
         url: "/institution/users",
         default_icon: Users,
+      },
+      {
+        description: "Endereços",
+        url: "/institution/addresses",
+        default_icon: MapPinHouse,
       },
     ],
   },

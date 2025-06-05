@@ -1,9 +1,7 @@
 import {
   Droplets,
   Earth,
-  ExternalLink,
   TrendingUp,
-  Volleyball,
 } from "lucide-react";
 import { Badge } from "../ui/badge";
 import Link from "next/link";
@@ -11,6 +9,8 @@ import { InstitutionService } from "@/modules/institution/service/InstitutionSer
 import { auth } from "@/lib/db/auth";
 import DashboardButtons from "../dashboard-buttons";
 import { getCollectionsByInstitutionId } from "@/modules/collection/actions";
+import { getTotalVolume } from "@/modules/service/get-total-volume";
+import InstitutionCard from "../institution-card";
 
 function SysAdminDashboard() {
   return (
@@ -130,63 +130,19 @@ function SysAdminDashboard() {
 }
 
 async function InstitutionDashboard() {
-  const institutionService = new InstitutionService();
-
   const session = await auth();
   const institutionId = session?.user.institutionId;
-  const institution = await institutionService.getById(institutionId);
 
   const collections = await getCollectionsByInstitutionId(institutionId);
 
-  async function getTotalVolume() {
-    if (collections.length === 0) {
-      return 0;
-    }
-
-    const totalVolume = collections.reduce((acc, collection) => {
-      return acc + (collection.volumeCollected || 0);
-    }, 0);
-
-    return totalVolume;
-  }
-
-  const totalVolume = await getTotalVolume();
+  const totalVolume = await getTotalVolume(institutionId);
 
   const emissoesReduzidas = totalVolume * 0.9 * 0.37;
   const contaminacaoReduzida = totalVolume * 25000;
 
   return (
     <div className="w-full max-w-4xl flex flex-col items-center justify-start gap-16">
-      <div className="h-24 w-full p-4 flex flex-row items-center justify-between rounded-2xl bg-gradient-to-br from-sky-400 to-emerald-300">
-        <div className="h-full flex flex-col gap-1 items-start justify-start">
-          <span className="text-sm font-semibold text-white">
-            {institution?.businessName}
-          </span>
-          <span className="text-sm text-white">
-            {institution?.cnpj.replace(
-              /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/,
-              "$1.$2.$3/$4-$5"
-            )}
-          </span>
-        </div>
-        <div className="h-full flex flex-col items-end justify-end">
-          <Link
-            target="_blank"
-            href="https://instagram.com/biolink.eco"
-            className="group h-7 px-2 flex items-center justify-center bg-white rounded-[8px]"
-          >
-            <div className="flex flex-row items-center justify-center gap-2">
-              <Volleyball size={16} className="text-sky-400" />
-              <div className="flex flex-row items-center justify-center gap-1">
-                <span className="text-xs group-hover:underline">
-                  Conheça as atividades que promovemos
-                </span>
-                <ExternalLink size={12} strokeWidth={2.5} />
-              </div>
-            </div>
-          </Link>
-        </div>
-      </div>
+      <InstitutionCard/>
 
       <DashboardButtons />
 
