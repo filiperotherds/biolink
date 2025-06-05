@@ -12,8 +12,8 @@ import CreateCollection from "@/components/form/create-collection";
 import { CollectionInfoCardSkeleton } from "@/components/skeleton/collection-info-card-skeleon";
 import { Suspense } from "react";
 import CollectionInfoCard from "@/components/collection-info-card";
-import CollectionCard from "@/components/collection-card";
 import CollectionsList from "@/components/collections-list";
+import { AddressListSkeleton } from "@/components/skeleton/address-list-skeleton";
 
 export default function Colects() {
   return (
@@ -55,12 +55,14 @@ export default function Colects() {
               </Dialog>
             </div>
 
-            <CollectionsList/>
+            <Suspense fallback={<AddressListSkeleton />}>
+              <CollectionsList />
+            </Suspense>
           </div>
         </div>
 
-        <Suspense fallback={<CollectionInfoCardSkeleton/>}>
-          <CollectionInfoCard/>
+        <Suspense fallback={<CollectionInfoCardSkeleton />}>
+          <CollectionInfoCard />
         </Suspense>
 
         <div className="col-span-2 row-span-4 col-start-4 row-start-3 bg-zinc-50">
