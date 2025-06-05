@@ -2,7 +2,6 @@ import { Badge } from "@/components/ui/badge";
 import { auth } from "@/lib/db/auth";
 import { getCollectionsByInstitutionId } from "@/modules/collection/actions";
 import { getTotalVolume } from "@/modules/service/get-total-volume";
-import { InstitutionService } from "@/modules/institution/service/InstitutionService";
 import { Droplets, PlusIcon } from "lucide-react";
 import {
   Sheet,
