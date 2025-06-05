@@ -1,17 +1,16 @@
 import db from "@/lib/db";
 import { executeAction } from "@/lib/executeAction";
-import { schema, Schema } from "@/modules/collection/schema";
+import { schema } from "@/modules/collection/schema";
 
-const createCollection = async (collectionData: Schema) => {
+const createCollection = async (
+  description: string,
+  createdById: string,
+  institutionId: string,
+  pickupAddressId: string
+) => {
   return executeAction({
     actionFn: async () => {
-      const description = collectionData.description
-        ? collectionData.description
-        : null;
-      const createdById = collectionData.createdById;
-      const institutionId = collectionData.institutionId;
       const status = "PENDING_APPROVAL";
-      const pickupAddressId = collectionData.pickupAddressId;
 
       const validatedData = schema.parse({
         description,
@@ -35,15 +34,31 @@ const createCollection = async (collectionData: Schema) => {
   });
 };
 
-const getCollectionById = async (collectionId: string) => {
-    const collection = await db.collection.findUnique({
+const approveCollection = async (collectionId: string, approvedById: string) => {
+  return executeAction({
+    actionFn: async () => {
+      await db.collection.update({
         where: { id: collectionId },
-    });
-    if (!collection) {
-        return null;
-    }
-    return collection;
-}
+        data: {
+          status: "APPROVED",
+          approvedById: approvedById,
+          approvedAt: new Date(),
+        },
+      });
+    },
+    successMessage: "Coleta aprovada com sucesso.",
+  });
+};
+
+const getCollectionById = async (collectionId: string) => {
+  const collection = await db.collection.findUnique({
+    where: { id: collectionId },
+  });
+  if (!collection) {
+    return null;
+  }
+  return collection;
+};
 
 const getCollectionsByInstitutionId = async (institutionId: string) => {
   const collections = await db.collection.findMany({
@@ -56,4 +71,4 @@ const getCollectionsByInstitutionId = async (institutionId: string) => {
   return collections;
 };
 
-export { createCollection, getCollectionById, getCollectionsByInstitutionId };
+export { createCollection, approveCollection, getCollectionById, getCollectionsByInstitutionId };
