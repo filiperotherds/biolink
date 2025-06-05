@@ -25,7 +25,6 @@ import {
 
 export default async function Colects() {
   const session = await auth();
-  const institutionService = new InstitutionService();
 
   const institutionId = session?.user.institutionId;
 
