@@ -20,9 +20,6 @@ export default function AddressForm(props: AddressFormProps) {
     const [state, setState] = useState("");
     const [number, setNumber] = useState("");
 
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
-
     function handleZipCodeChange(event: React.ChangeEvent<HTMLInputElement>) {
         const value = event.target.value.replace(/\D/g, "");
         if (value.length <= 8) {
@@ -34,8 +31,6 @@ export default function AddressForm(props: AddressFormProps) {
         if (zipCode.length !== 8) return;
 
         async function fetchAddress() {
-            setLoading(true);
-            setError("");
 
             try {
                 const res = await fetch(`https://brasilapi.com.br/api/cep/v1/${zipCode}`);
@@ -46,11 +41,7 @@ export default function AddressForm(props: AddressFormProps) {
                 setCity(data.city || "");
                 setState(data.state || "");
             } catch (err) {
-                if (err instanceof Error) {
-                setError(err.message || "Erro ao buscar CEP");
-                }
-            } finally {
-                setLoading(false);
+                return err;
             }
         }
         fetchAddress();

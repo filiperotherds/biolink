@@ -1,7 +1,5 @@
 "use client";
-import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, FileText, BarChart3, Award } from "lucide-react";
 import { useRouter } from "next/navigation"; // Importando useRouter

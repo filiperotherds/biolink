@@ -4,8 +4,6 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { Badge } from "../ui/badge";
-import Link from "next/link";
-import { InstitutionService } from "@/modules/institution/service/InstitutionService";
 import { auth } from "@/lib/db/auth";
 import DashboardButtons from "../dashboard-buttons";
 import { getCollectionsByInstitutionId } from "@/modules/collection/actions";

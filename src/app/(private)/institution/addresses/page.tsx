@@ -16,7 +16,6 @@ import AddressForm from "@/components/AddressForm";
 import AddressCard from "@/components/address-card";
 import { createAddress, getAddressesByInstitutionId } from "@/modules/address/actions";
 import { auth } from "@/lib/db/auth";
-import { get } from "http";
 import { revalidatePath } from "next/cache";
 
 export default async function Addresses() {

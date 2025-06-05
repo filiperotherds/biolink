@@ -29,7 +29,6 @@ export default async function Colects() {
 
   const institutionId = session?.user.institutionId;
 
-  const institution = await institutionService.getById(institutionId);
   const collections = await getCollectionsByInstitutionId(institutionId);
 
   const totalVolume = await getTotalVolume(institutionId);
