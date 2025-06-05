@@ -1,18 +1,16 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import {
-  Recycle,
-  Target,
-  Eye,
-  Heart,
-} from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Recycle, Target, Eye, Heart } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/navigation";  // Importa o hook useRouter
 
 export default function AboutPage() {
+  const router = useRouter(); // Usando o useRouter para navegação programática
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -147,20 +145,15 @@ export default function AboutPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-                onClick={() => alert("Cadastro iniciado!")}
+                onClick={() => router.push("/signup")} // Redireciona para a página de login
               >
                 Cadastre-se
-              </button>
-              <button
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors"
-                onClick={() => alert("Entraremos em contato!")}
-              >
-                Falar com especialista
               </button>
             </div>
           </CardContent>
         </Card>
       </section>
     </div>
-  )
+  );
 }
+

@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   Calendar,
   Shield,
@@ -15,9 +15,12 @@ import {
   Droplets,
   Trash2,
   Recycle,
-} from "lucide-react"
+} from "lucide-react";
+import { useRouter } from "next/navigation"; // Importa o useRouter
 
 export default function BenefitsSection() {
+  const router = useRouter(); // Usando o useRouter para navegação programática
+
   const benefits = [
     {
       icon: Calendar,
@@ -68,7 +71,7 @@ export default function BenefitsSection() {
         "Acumule pontos por boas práticas e troque por brindes, destaque nas redes sociais ou descontos com parceiros.",
       badge: "Em breve",
     },
-  ]
+  ];
 
   const environmentalImpacts = [
     {
@@ -87,7 +90,7 @@ export default function BenefitsSection() {
       title: "Reaproveitamento sustentável",
       description: "Reaproveitamento na indústria de biocombustíveis e sabões.",
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -155,7 +158,10 @@ export default function BenefitsSection() {
             Simplificamos o processo de coleta e reciclagem de óleo usado. Sua
             empresa em dia, sem complicações e sem custos.
           </p>
-          <Button className="bg-green-500 hover:bg-green-600 text-white text-lg px-8 py-3 cursor-pointer">
+          <Button
+            className="bg-green-500 hover:bg-green-600 text-white text-lg px-8 py-3 cursor-pointer"
+            onClick={() => router.push("/signup")} // Redireciona para a página de cadastro
+          >
             Cadastre-se
           </Button>
         </div>
@@ -174,7 +180,7 @@ export default function BenefitsSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, index) => {
-              const Icon = benefit.icon
+              const Icon = benefit.icon;
               return (
                 <Card
                   key={index}
@@ -205,7 +211,7 @@ export default function BenefitsSection() {
                     </div>
                   </CardContent>
                 </Card>
-              )
+              );
             })}
           </div>
         </div>
@@ -227,7 +233,7 @@ export default function BenefitsSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {environmentalImpacts.map((impact, index) => {
-              const Icon = impact.icon
+              const Icon = impact.icon;
               return (
                 <div key={index} className="text-center">
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -238,11 +244,11 @@ export default function BenefitsSection() {
                   </h3>
                   <p className="text-zinc-600">{impact.description}</p>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }

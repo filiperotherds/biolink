@@ -1,38 +1,16 @@
-"use client"
-import Image from "next/image"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, FileText, BarChart3, Award } from "lucide-react"
+"use client";
+import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { CheckCircle, FileText, BarChart3, Award } from "lucide-react";
+import { useRouter } from "next/navigation"; // Importando useRouter
 
 export default function Certificates() {
+  const router = useRouter(); // Usando useRouter para navegação programática
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Header/Navigation */}
-      <header className="border-b">
-        <div className="container flex items-center justify-between py-4">
-          <div className="flex items-center gap-8">
-            <Image src="/logo.svg" alt="Biolink" width={120} height={40} className="h-10 w-auto" />
-            <nav className="hidden md:flex items-center gap-6">
-              <a href="#" className="text-gray-600 hover:text-gray-900">Benefícios</a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">Sobre</a>
-              <div className="relative group">
-                <a href="#" className="text-gray-900 font-medium flex items-center gap-1">
-                  Recursos
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 8.5L2 4.5H10L6 8.5Z" fill="currentColor" />
-                  </svg>
-                </a>
-              </div>
-            </nav>
-          </div>
-          <div className="flex items-center gap-3">
-            <Button variant="outline" className="hidden md:flex">Cadastre-se</Button>
-            <Button className="bg-green-500 hover:bg-green-600 text-white">Entrar</Button>
-          </div>
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section className="py-16 md:py-24">
         <div className="container">
@@ -153,11 +131,11 @@ export default function Certificates() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {[
+            {[ 
               ["Cumprimento da legislação ambiental", "Esteja em conformidade com as normas ambientais vigentes e evite multas e sanções."],
               ["Vantagens em processos de licenciamento", "Facilite a obtenção e renovação de licenças ambientais com documentação adequada."],
               ["Possibilidade de incentivos fiscais", "Aproveite benefícios fiscais disponíveis para empresas com práticas sustentáveis."],
-              ["Fortalecimento da imagem sustentável", "Melhore a reputação da sua marca com comprovação oficial de práticas ambientais."],
+              ["Fortalecimento da imagem sustentável", "Melhore a reputação da sua marca com comprovação oficial de práticas ambientais."]
             ].map(([title, desc]) => (
               <div className="flex gap-4" key={title}>
                 <div className="flex-shrink-0">
@@ -182,7 +160,10 @@ export default function Certificates() {
               Junte-se a centenas de empresas que já estão em conformidade ambiental e aproveitando benefícios fiscais com a Biolink.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+              <button
+                className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                onClick={() => router.push("/signup")} // Redireciona para a página de cadastro
+              >
                 Cadastre-se
               </button>
             </div>
@@ -190,5 +171,5 @@ export default function Certificates() {
         </Card>
       </section>
     </div>
-  )
+  );
 }
