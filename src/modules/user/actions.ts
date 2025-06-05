@@ -31,17 +31,14 @@ const createUser = async (formData: FormData, institutionId: string) => {
 };
 
 const deleteUser = async (userId: string) => {
-  try {
-    const deleted = await db.user.delete({
-      where: {
-        id: userId,
-      },
-    });
-    return deleted;
-  } catch (error) {
-    console.error("Error deleting user:", error);
-    return { success: false, error: "Failed to delete user" };
-  }
+  return executeAction({
+    actionFn: async () => {
+      await db.user.delete({
+        where: { id: userId },
+      });
+    },
+    successMessage: "Usuário deletado com sucesso",
+  });
 };
 
 const getUserByInstitutionId = async (institutionId: string) => {
@@ -52,4 +49,11 @@ const getUserByInstitutionId = async (institutionId: string) => {
   return users;
 };
 
-export { createUser, deleteUser, getUserByInstitutionId };
+const getUserById = async (userId: string) => {
+  const user = await db.user.findUnique({
+    where: { id: userId },
+  });
+  return user;
+}
+
+export { createUser, deleteUser, getUserByInstitutionId, getUserById };

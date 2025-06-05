@@ -2,14 +2,20 @@ import db from "@/lib/db";
 import { executeAction } from "@/lib/executeAction";
 import { schema } from "@/modules/collection/schema";
 
-const createCollection = async (
-  description: string,
-  createdById: string,
-  institutionId: string,
-  pickupAddressId: string
-) => {
+interface CreateCollectionProps {
+  description: string;
+  createdById: string;
+  institutionId: string;
+  pickupAddressId: string;
+}
+
+const createCollection = async (CreateCollectionProps: CreateCollectionProps) => {
   return executeAction({
     actionFn: async () => {
+      const description = CreateCollectionProps.description;
+      const createdById = CreateCollectionProps.createdById;
+      const institutionId = CreateCollectionProps.institutionId;
+      const pickupAddressId = CreateCollectionProps.pickupAddressId;
       const status = "PENDING_APPROVAL";
 
       const validatedData = schema.parse({

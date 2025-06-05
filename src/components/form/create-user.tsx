@@ -18,7 +18,6 @@ export default async function CreateUser() {
 
   return (
     <form
-      className="p-4"
       action={async (formData) => {
         "use server";
 
@@ -28,7 +27,7 @@ export default async function CreateUser() {
         }
       }}
     >
-      <div className="grid gap-3">
+      <div className="grid gap-3 pb-4">
         <Label htmlFor="name">Nome completo</Label>
         <Input name="name" placeholder="Nome completo" type="text" required />
         <Label htmlFor="email">Email</Label>

@@ -60,13 +60,8 @@ const Manager: SidebarData[] = [
       },
       {
         description: "Coletas",
-        url: "/institution/collects",
+        url: "/institution/collections",
         default_icon: Truck,
-      },
-      {
-        description: "Recipientes",
-        url: "/institution/containers",
-        default_icon: Box,
       },
     ],
   },
@@ -93,8 +88,13 @@ const Standard: SidebarData[] = [
     itens: [
       {
         description: "Dashboard",
-        url: "/dashboard",
+        url: "/institution/dashboard",
         default_icon: LayoutGrid,
+      },
+      {
+        description: "Coletas",
+        url: "/institution/collections",
+        default_icon: Truck,
       },
     ],
   },
