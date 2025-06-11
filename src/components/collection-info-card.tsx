@@ -3,18 +3,18 @@ import { Badge } from "./ui/badge";
 import { getCollectionsByInstitutionId } from "@/modules/collection/actions";
 import { getTotalVolume } from "@/modules/service/get-total-volume";
 import { auth } from "@/lib/db/auth";
+import { getEnvironmentalImpact } from "@/modules/service/get-environmental-impact";
 
 export default async function CollectionInfoCard() {
   const session = await auth();
-
   const institutionId = session?.user.institutionId;
 
-  const collections = await getCollectionsByInstitutionId(institutionId);
-
-  const totalVolume = await getTotalVolume(institutionId);
-
-  const emissoesReduzidas = totalVolume * 0.9 * 0.37;
-  const contaminacaoReduzida = totalVolume * 25000;
+  const {
+    totalVolume,
+    totalCollections,
+    reducedEmissions,
+    waterContaminationAvoided,
+  } = await getEnvironmentalImpact(institutionId);
 
   return (
     <div className="col-span-2 row-span-2 col-start-4 border border-border shadow-xs rounded-2xl p-4">
@@ -33,9 +33,9 @@ export default async function CollectionInfoCard() {
         <div>
           <span className="text-xs text-muted-foreground">Coletas Totais</span>
           <h1 className="text-3xl font-bold">
-            {collections.length}{" "}
+            {totalCollections}{" "}
             <span className="text-lg">
-              {collections.length === 1 ? "Requisição" : "Requisições"}
+              {totalCollections === 1 ? "Requisição" : "Requisições"}
             </span>
           </h1>
         </div>
@@ -45,7 +45,7 @@ export default async function CollectionInfoCard() {
             Emissões de CO² reduzidas
           </span>
           <h1 className="text-3xl font-bold">
-            {emissoesReduzidas.toPrecision(2)}{" "}
+            {reducedEmissions.toPrecision(2)}{" "}
             <span className="text-lg">kg CO²</span>
           </h1>
         </div>
@@ -55,7 +55,7 @@ export default async function CollectionInfoCard() {
             Contaminação hídrica evitada
           </span>
           <h1 className="text-3xl font-bold">
-            {contaminacaoReduzida.toPrecision(2)}{" "}
+            {waterContaminationAvoided.toPrecision(2)}{" "}
             <span className="text-lg">litros de água</span>
           </h1>
         </div>

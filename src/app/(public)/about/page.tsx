@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Recycle, Target, Eye, Heart } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";  // Importa o hook useRouter
+import { useRouter } from "next/navigation"; // Importa o hook useRouter
 
 export default function AboutPage() {
   const router = useRouter(); // Usando o useRouter para navegação programática
@@ -24,13 +24,32 @@ export default function AboutPage() {
               <span className="text-xl font-bold text-gray-900">biolink</span>
             </div>
             <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/beneficios" className="text-gray-600 hover:text-gray-900">Benefícios</Link>
-              <Link href="/sobre" className="text-gray-900 font-medium">Sobre</Link>
-              <Link href="/recursos" className="text-gray-600 hover:text-gray-900">Recursos</Link>
+              <Link
+                href="/beneficios"
+                className="text-gray-600 hover:text-gray-900"
+              >
+                Benefícios
+              </Link>
+              <Link href="/sobre" className="text-gray-900 font-medium">
+                Sobre
+              </Link>
+              <Link
+                href="/recursos"
+                className="text-gray-600 hover:text-gray-900"
+              >
+                Recursos
+              </Link>
             </nav>
             <div className="flex items-center space-x-4">
-              <Link href="/cadastro" className="text-gray-600 hover:text-gray-900">Cadastre-se</Link>
-              <Button className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg">Entrar</Button>
+              <Link
+                href="/cadastro"
+                className="text-gray-600 hover:text-gray-900"
+              >
+                Cadastre-se
+              </Link>
+              <Button className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg">
+                Entrar
+              </Button>
             </div>
           </div>
         </div>
@@ -41,9 +60,18 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">Quem Somos</h1>
+              <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
+                Quem Somos
+              </h1>
               <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed">
-                A Biolink é uma startup que acredita que pequenas atitudes geram grandes impactos. Conectamos empresas e instituições a um sistema inteligente e sustentável de coleta de óleo de cozinha usado, com logística gratuita, certificações ambientais e benefícios fiscais. Mais do que uma empresa de coleta, somos um elo entre responsabilidade e transformação. Com tecnologia, empatia e compromisso, transformamos resíduos em oportunidades para você, para sua empresa e para o planeta.
+                A Biolink é uma startup que acredita que pequenas atitudes geram
+                grandes impactos. Conectamos empresas e instituições a um
+                sistema inteligente e sustentável de coleta de óleo de cozinha
+                usado, com logística gratuita, certificações ambientais e
+                benefícios fiscais. Mais do que uma empresa de coleta, somos um
+                elo entre responsabilidade e transformação. Com tecnologia,
+                empatia e compromisso, transformamos resíduos em oportunidades
+                para você, para sua empresa e para o planeta.
               </p>
             </div>
             <div className="w-full h-full flex items-center">
@@ -71,7 +99,9 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Missão</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Facilitar a logística reversa do óleo usado com responsabilidade ambiental, incentivo à economia circular e valorização dos parceiros.
+                  Facilitar a logística reversa do óleo usado com
+                  responsabilidade ambiental, incentivo à economia circular e
+                  valorização dos parceiros.
                 </p>
               </CardContent>
             </Card>
@@ -83,7 +113,9 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Visão</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Ser referência nacional em soluções sustentáveis para o descarte de resíduos orgânicos, promovendo impacto positivo nas comunidades.
+                  Ser referência nacional em soluções sustentáveis para o
+                  descarte de resíduos orgânicos, promovendo impacto positivo
+                  nas comunidades.
                 </p>
               </CardContent>
             </Card>
@@ -93,12 +125,20 @@ export default function AboutPage() {
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
                   <Heart className="w-6 h-6 text-purple-500" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Valores</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  Valores
+                </h3>
                 <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-gray-100 text-gray-700">Sustentabilidade</Badge>
-                  <Badge className="bg-gray-100 text-gray-700">Simplicidade</Badge>
+                  <Badge className="bg-gray-100 text-gray-700">
+                    Sustentabilidade
+                  </Badge>
+                  <Badge className="bg-gray-100 text-gray-700">
+                    Simplicidade
+                  </Badge>
                   <Badge className="bg-gray-100 text-gray-700">Conexão</Badge>
-                  <Badge className="bg-gray-100 text-gray-700">Comprometimento</Badge>
+                  <Badge className="bg-gray-100 text-gray-700">
+                    Comprometimento
+                  </Badge>
                   <Badge className="bg-gray-100 text-gray-700">Ética</Badge>
                 </div>
               </CardContent>
@@ -112,10 +152,16 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Badge className="bg-green-100 text-green-700 mb-4">Sustentabilidade & Economia</Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Compromisso com o meio ambiente</h2>
+              <Badge className="bg-green-100 text-green-700 mb-4">
+                Sustentabilidade & Economia
+              </Badge>
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                Compromisso com o meio ambiente
+              </h2>
               <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                A cada litro de óleo reciclado, evitamos a contaminação de milhares de litros de água. Juntos, transformamos resíduos em responsabilidade.
+                A cada litro de óleo reciclado, evitamos a contaminação de
+                milhares de litros de água. Juntos, transformamos resíduos em
+                responsabilidade.
               </p>
             </div>
             <div className="relative w-full">
@@ -127,7 +173,9 @@ export default function AboutPage() {
                 className="rounded-xl shadow-md w-full h-auto object-cover"
               />
               <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 px-3 py-1 rounded-md shadow">
-                <span className="text-sm font-medium text-gray-900">Operação Sustentável</span>
+                <span className="text-sm font-medium text-gray-900">
+                  Operação Sustentável
+                </span>
               </div>
             </div>
           </div>
@@ -138,9 +186,12 @@ export default function AboutPage() {
       <section className="text-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <Card className="border-0 shadow-lg bg-gradient-to-r from-green-500 to-blue-600 text-white">
           <CardContent className="py-12">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Pronto para fazer a diferença?</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              Pronto para fazer a diferença?
+            </h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Junte-se a nós na construção de um futuro mais sustentável. Seja nosso parceiro e transforme seu negócio.
+              Junte-se a nós na construção de um futuro mais sustentável. Seja
+              nosso parceiro e transforme seu negócio.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
@@ -156,4 +207,3 @@ export default function AboutPage() {
     </div>
   );
 }
-

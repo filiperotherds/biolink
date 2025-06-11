@@ -1,6 +1,7 @@
 import { schema } from "@/modules/user/schema";
 import db from "@/lib/db";
 import { executeAction } from "@/lib/executeAction";
+import bcrypt from "bcrypt";
 
 const createUser = async (formData: FormData, institutionId: string) => {
   return executeAction({
@@ -16,11 +17,14 @@ const createUser = async (formData: FormData, institutionId: string) => {
         institutionId,
         role,
       });
+
+      const hashedPassword = await bcrypt.hash(validatedData.password, 10);
+
       await db.user.create({
         data: {
           name: validatedData.name,
           email: validatedData.email.toLocaleLowerCase(),
-          password: validatedData.password,
+          password: hashedPassword,
           institutionId: validatedData.institutionId,
           role: validatedData.role || "STANDARD_USER",
         },

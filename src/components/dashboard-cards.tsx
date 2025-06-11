@@ -1,19 +1,18 @@
 import { auth } from "@/lib/db/auth";
-import { getCollectionsByInstitutionId } from "@/modules/collection/actions";
-import { getTotalVolume } from "@/modules/service/get-total-volume";
 import { Badge } from "./ui/badge";
 import { Droplets, Earth } from "lucide-react";
+import { getEnvironmentalImpact } from "@/modules/service/get-environmental-impact";
 
 export default async function DashboardCards() {
   const session = await auth();
   const institutionId = session?.user.institutionId;
 
-  const collections = await getCollectionsByInstitutionId(institutionId);
-
-  const totalVolume = await getTotalVolume(institutionId);
-
-  const emissoesReduzidas = totalVolume * 0.9 * 0.37;
-  const contaminacaoReduzida = totalVolume * 25000;
+  const {
+    totalVolume,
+    totalCollections,
+    reducedEmissions,
+    waterContaminationAvoided,
+  } = await getEnvironmentalImpact(institutionId);
 
   return (
     <div className="w-full flex flex-row items-center gap-2">
@@ -39,11 +38,11 @@ export default async function DashboardCards() {
         <div className="flex flex-col items-start justify-start gap-2">
           <span className="text-xs font-semibold">
             Média de{" "}
-            {totalVolume / collections.length !== 0 ? collections.length : 0}{" "}
+            {totalVolume / totalCollections !== 0 ? totalCollections : 0}{" "}
             litros
           </span>
           <span className="text-xs text-muted-foreground">
-            Obtidos em um total de {collections.length} coletas
+            Obtidos em um total de {totalCollections} coletas
           </span>
         </div>
       </div>
@@ -63,7 +62,7 @@ export default async function DashboardCards() {
             Emissões de CO² reduzidas
           </span>
           <h1 className="text-3xl font-bold">
-            {emissoesReduzidas.toPrecision(2)}{" "}
+            {reducedEmissions.toPrecision(2)}{" "}
             <span className="text-lg">kg CO²</span>
           </h1>
         </div>
@@ -73,7 +72,7 @@ export default async function DashboardCards() {
             Contaminação hídrica evitada
           </span>
           <h1 className="text-3xl font-bold">
-            {contaminacaoReduzida.toPrecision(2)}{" "}
+            {waterContaminationAvoided.toPrecision(2)}{" "}
             <span className="text-lg">litros de água</span>
           </h1>
         </div>
