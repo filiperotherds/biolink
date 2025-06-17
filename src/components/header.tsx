@@ -17,15 +17,12 @@ import {
 } from "@/components/ui/navigation-menu";
 
 export function Header() {
-
   return (
-    <header
-      className="absolute w-full top-0 left-0 right-0 z-50 backdrop-blur-sm"
-    >
-      <div className="container max-w-8xl mx-auto flex h-16 items-center justify-between px-16">
+    <header className="absolute w-full px-16 top-0 left-0 right-0 z-50">
+      <div className="container max-w-7xl mx-auto flex h-24 items-center justify-between">
         <div className="flex items-center gap-16">
           <Link href="/" className="flex items-center gap-2">
-            <div className="relative w-40 h-10">
+            <div className="relative w-44 h-10">
               <Image
                 src="/logo_biolink_white.png"
                 alt="Logo"
@@ -36,25 +33,40 @@ export function Header() {
           </Link>
           <NavigationMenu className="hidden md:flex text-white">
             <NavigationMenuList className="flex gap-1">
-              {/* Botão Benefícios corrigido */}
               <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/benefits" className="font-medium cursor-pointer">
-                    Benefícios
-                  </Link>
+                <NavigationMenuLink
+                  href="/benefits"
+                  className="text-base font-semibold cursor-pointer"
+                >
+                  Benefícios
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink href="/benefits" className="group" asChild>
+                  <div className="relative py-2 cursor-pointer">
+                    <span className="text-base font-semibold group-hover:text-white">
+                      Benefícios
+                    </span>
+
+                    <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></div>
+                  </div>
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
               {/* Item simples, sem dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuLink href="/about" className="font-medium cursor-pointer">
-                  Sobre
+                <NavigationMenuLink
+                  href="/about"
+                  className="text-base font-semibold cursor-pointer"
+                >
+                  A Biolink
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
               {/* Item com menu suspenso */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent cursor-pointer">
+                <NavigationMenuTrigger className="text-base font-semibold cursor-pointer bg-transparent">
                   Recursos
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="rounded-lg p-2">
@@ -117,12 +129,16 @@ export function Header() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-12">
           <div className="flex items-center gap-2">
-            <Button variant="default" size="default" className="bg-transparent text-white border-2 hover:bg-transparent cursor-pointer">
+            <Button
+              variant="default"
+              size="default"
+              className="bg-transparent text-white border-2 hover:bg-transparent cursor-pointer"
+            >
               Cadastre-se
             </Button>
             <Link
-              href={'/login'}
-              className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
+              href={"/login"}
+              className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-[#3d3d3d] shadow transition-colors hover:bg-primary/90"
             >
               Entrar
             </Link>

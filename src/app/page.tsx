@@ -15,7 +15,7 @@ export default function Home() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-12">
               Gestão inteligente de óleo usado, sem esforço e sem custo.
             </h1>
-            <p className="text-lg md:text-xl font-light text-zinc-400 max-w-2xl mx-auto mb-12">
+            <p className="text-lg md:text-xl font-light text-white max-w-2xl mx-auto mb-12">
               Simplificamos o processo de coleta e reciclagem de óleo usado. Sua
               empresa em dia, sem complicações e sem custos.
             </p>
