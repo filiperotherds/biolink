@@ -1,6 +1,5 @@
 'use client'
 
-import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
 export default function Test() {
@@ -11,7 +10,7 @@ export default function Test() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center relative overflow-hidden">
+    <main className="min-h-screen flex flex-col items-center relative overflow-hidden bg-[url('/ocean-background.jpg')] bg-cover bg-center bg-no-repeat">
       
     </main>
   );
