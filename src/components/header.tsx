@@ -132,7 +132,7 @@ export function Header() {
             <Button
               variant="default"
               size="default"
-              className="bg-transparent text-white border-2 hover:bg-transparent cursor-pointer"
+              className="bg-transparent text-white border-2 border-white hover:border-white/70 hover:text-white/70 hover:bg-transparent transition-all cursor-pointer"
             >
               Cadastre-se
             </Button>

@@ -25,21 +25,22 @@ export default function Test() {
           </h1>
 
           <p className="text-lg font-medium text-white max-w-2xl">
-            Simplificamos o processo de coleta e reciclagem de óleo usado. Sua
-            empresa em dia, sem complicações e sem custos.
+            Simplificamos o processo de coleta e reciclagem de óleo usado.
+            <br />
+            Sua empresa em dia, sem complicações e sem custos.
           </p>
 
           <Button
             onClick={handleSignup}
             variant="outline"
-            className="h-12 w-64 flex items-center justify-center bg-transparent border border-white rounded-lg"
+            className="group h-12 w-64 flex items-center justify-center bg-transparent border border-white hover:border-white/70 hover:bg-transparent rounded-lg transition-all cursor-pointer"
           >
-            <span className="text-lg text-white font-semibold">Saiba Mais</span>
+            <span className="text-lg text-white font-semibold group-hover:text-white/70 transition-all">Saiba Mais</span>
           </Button>
         </div>
-        <div className="relative flex-1 h-full">
+        <div className="flex-1 h-full">
           <div className="absolute right-24 top-24">
-            <span className="absolute top-0 left-0 text-[192px] font-extrabold bg-gradient-to-b from-white via-[#eaf6f8] to-[#bdd7e0] bg-clip-text text-transparent">
+            <span className="top-0 left-0 text-[192px] font-black bg-gradient-to-b from-white via-[#aedbe2] to-[#166c8c] bg-clip-text text-transparent">
               ESG
             </span>
           </div>
