@@ -1,7 +1,5 @@
 import { Droplets } from "lucide-react";
 import { Badge } from "./ui/badge";
-import { getCollectionsByInstitutionId } from "@/modules/collection/actions";
-import { getTotalVolume } from "@/modules/service/get-total-volume";
 import { auth } from "@/lib/db/auth";
 import { getEnvironmentalImpact } from "@/modules/service/get-environmental-impact";
 
