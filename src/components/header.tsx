@@ -7,14 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 import * as React from "react";
-import {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuTrigger,
-  NavigationMenuContent,
-  NavigationMenuLink,
-} from "@/components/ui/navigation-menu";
 
 export function Header() {
   return (
@@ -31,99 +23,47 @@ export function Header() {
               />
             </div>
           </Link>
-          <NavigationMenu className="hidden md:flex text-white">
-            <NavigationMenuList className="flex gap-1">
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="/benefits"
-                  className="text-base font-semibold cursor-pointer"
-                >
-                  Benefícios
-                </NavigationMenuLink>
-              </NavigationMenuItem>
+          <nav className="hidden md:flex md:flex-row items-center justify-start gap-8 text-white">
+            <Link href="/about" className="group relative py-2">
+              <span className="text-base font-semibold group-hover:text-white/80">
+                A Biolink
+              </span>
 
-              <NavigationMenuItem>
-                <NavigationMenuLink href="/benefits" className="group" asChild>
-                  <div className="relative py-2 cursor-pointer">
-                    <span className="text-base font-semibold group-hover:text-white">
-                      Benefícios
-                    </span>
+              <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></div>
+            </Link>
 
-                    <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></div>
-                  </div>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
+            <Link href="/services" className="group relative py-2">
+              <span className="text-base font-semibold group-hover:text-white/80">
+                Serviços
+              </span>
 
-              {/* Item simples, sem dropdown */}
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="/about"
-                  className="text-base font-semibold cursor-pointer"
-                >
-                  A Biolink
-                </NavigationMenuLink>
-              </NavigationMenuItem>
+              <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></div>
+            </Link>
 
-              {/* Item com menu suspenso */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-base font-semibold cursor-pointer bg-transparent">
-                  Recursos
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="rounded-lg p-2">
-                  <div className="flex gap-2">
-                    <NavigationMenuLink
-                      href="/"
-                      className="top-0 bottom-0 w-40 flex flex-col items-start justify-end bg-zinc-100"
-                    >
-                      <div className="relative w-28 h-8">
-                        <Image
-                          src="/extended_logo_gray.svg"
-                          alt="Logo"
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                      <p className="text-xs text-zinc-500">
-                        Ligando sua empresa a um futuro mais limpo.
-                      </p>
-                    </NavigationMenuLink>
-                    <div className="flex flex-col gap-1">
-                      <NavigationMenuLink
-                        href="/coleta-agendada"
-                        className="w-64 flex flex-col items-start justify-start gap-1 hover:bg-zinc-100 rounded-md"
-                      >
-                        <p className="font-medium">Coleta Agendada</p>
-                        <p className="text-xs text-zinc-500">
-                          Entenda como a coleta agendada ajuda você cuidar do
-                          seu descarte.
-                        </p>
-                      </NavigationMenuLink>
-                      <NavigationMenuLink
-                        href="/certificados"
-                        className="w-64 flex flex-col items-start justify-start gap-1 hover:bg-zinc-100 rounded-md"
-                      >
-                        <p className="font-medium">Certificados</p>
-                        <p className="text-xs text-zinc-500">
-                          Encontre os certificados disponibilizados aos
-                          perceiros do projeto.
-                        </p>
-                      </NavigationMenuLink>
-                      <NavigationMenuLink
-                        href="/tax-benefits"
-                        className="w-64 flex flex-col items-start justify-start gap-1 hover:bg-zinc-100 rounded-md"
-                      >
-                        <p className="font-medium">Benefícios Fiscais</p>
-                        <p className="text-xs text-zinc-500">
-                          Descubra os benefícios fiscais disponibilizados aos
-                          participantes.
-                        </p>
-                      </NavigationMenuLink>
-                    </div>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+            <Link href="/esg" className="group relative py-2">
+              <span className="text-base font-semibold group-hover:text-white/80">
+                ESG
+              </span>
+
+              <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></div>
+            </Link>
+
+            <Link href="/results" className="group relative py-2">
+              <span className="text-base font-semibold group-hover:text-white/80">
+                Resultados
+              </span>
+
+              <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></div>
+            </Link>
+
+            <Link href="/news" className="group relative py-2">
+              <span className="text-base font-semibold group-hover:text-white/80">
+                Notícias
+              </span>
+
+              <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></div>
+            </Link>
+          </nav>
         </div>
 
         {/* Desktop Navigation */}
@@ -160,7 +100,7 @@ export function Header() {
                   <Link href="/" className="flex items-center gap-2 mb-8">
                     <div className="relative w-8 h-8">
                       <Image
-                        src="/extended_logo.png"
+                        src="/logo_biolink.png"
                         alt="Logo"
                         fill
                         className="object-contain"
@@ -170,22 +110,34 @@ export function Header() {
 
                   <nav className="flex flex-col space-y-4 mb-8">
                     <Link
-                      href="#features"
+                      href="/about"
                       className="text-base font-medium hover:text-primary hover:bg-zinc-100 px-4 py-2 rounded-md transition-all duration-200"
                     >
-                      Features
+                      A Biolink
                     </Link>
                     <Link
-                      href="#pricing"
+                      href="/services"
                       className="text-base font-medium hover:text-primary hover:bg-zinc-100 px-4 py-2 rounded-md transition-all duration-200"
                     >
-                      Pricing
+                      Serviços
                     </Link>
                     <Link
-                      href="#about"
+                      href="/esg"
                       className="text-base font-medium hover:text-primary hover:bg-zinc-100 px-4 py-2 rounded-md transition-all duration-200"
                     >
-                      About
+                      ESG
+                    </Link>
+                    <Link
+                      href="/results"
+                      className="text-base font-medium hover:text-primary hover:bg-zinc-100 px-4 py-2 rounded-md transition-all duration-200"
+                    >
+                      Resultados
+                    </Link>
+                    <Link
+                      href="/news"
+                      className="text-base font-medium hover:text-primary hover:bg-zinc-100 px-4 py-2 rounded-md transition-all duration-200"
+                    >
+                      Notícias
                     </Link>
                   </nav>
                 </div>

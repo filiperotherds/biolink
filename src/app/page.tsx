@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
@@ -6,9 +6,9 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
 
-const handleSignup = () => {
-  router.push("/signup");
-};
+  const handleSignup = () => {
+    router.push("/signup");
+  };
 
   return (
     <main className="relative h-screen flex flex-col items-center overflow-hidden bg-[linear-gradient(to_top_right,rgba(61,61,61,0.5),transparent),url('/ocean-background.jpg')] bg-cover bg-center bg-no-repeat">
@@ -41,7 +41,7 @@ const handleSignup = () => {
           </Button>
         </div>
         <div className="flex-1 h-full">
-          <div className="absolute right-24 top-24">
+          <div className="absolute right-24 top-24 lg:right-48 lg:top-48">
             <span className="top-0 left-0 text-[192px] font-black bg-gradient-to-b from-white via-[#aedbe2] to-[#166c8c] bg-clip-text text-transparent">
               ESG
             </span>
