@@ -12,7 +12,8 @@ export default function Home() {
 
   return (
     <main className="relative h-screen flex flex-col items-center overflow-hidden bg-[linear-gradient(to_top_right,rgba(61,61,61,0.5),transparent),url('/ocean-background.jpg')] bg-cover bg-center bg-no-repeat">
-      <section className="h-[calc(100%-96px)] w-full mt-24 max-w-7xl flex flex-row gap-4">
+      <div className="absolute -top-[460px] -left-[680px] h-[1600px] w-[1600px] border-3 border-primary rounded-[120px] rotate-45 z-0"></div>
+      <section className="h-[calc(100%-96px)] w-full mt-24 max-w-7xl flex flex-row gap-4 z-10">
         <div className="flex-1 gap-8 h-full flex flex-col items-start justify-center">
           <div className="py-1 px-4 flex items-center justify-center border-2 border-primary rounded-md">
             <span className="text-primary text-sm font-semibold">
@@ -47,6 +48,10 @@ export default function Home() {
             </span>
           </div>
         </div>
+      </section>
+
+      <section>
+        
       </section>
     </main>
   );

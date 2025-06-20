@@ -69,7 +69,6 @@ const getCollectionById = async (collectionId: string) => {
 const getCollectionsByInstitutionId = async (institutionId: string) => {
   const collections = await db.collection.findMany({
     where: { institutionId },
-    orderBy: { createdAt: "desc" },
   });
   if (!collections || collections.length === 0) {
     return [];
