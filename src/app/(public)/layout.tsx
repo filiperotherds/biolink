@@ -1,5 +1,4 @@
 import { Header } from "@/components/header";
-import Footer from "@/components/footer";
 import { GeistSans } from "geist/font/sans";
 
 export default function PublicLayout({
@@ -9,10 +8,8 @@ export default function PublicLayout({
 }) {
   return (
     <div className={`${GeistSans.className} scroll-smooth`}>
-      <Header />
+      <Header variant="default" />
       <main>{children}</main>
-      <Footer />
     </div>
   );
 }
-

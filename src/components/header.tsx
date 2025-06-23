@@ -5,149 +5,150 @@ import Image from "next/image";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-import * as React from "react";
+const headerVariants = cva("absolute w-full px-16 top-0 left-0 right-0 z-50", {
+  variants: {
+    variant: {
+      white: "text-white",
+      default: "text-[#3D3D3D]",
+    },
+  },
+  defaultVariants: {
+    variant: "white",
+  },
+});
 
-export function Header() {
+export interface HeaderProps extends VariantProps<typeof headerVariants> {}
+
+const navLinks = [
+  { href: "/about", label: "A Biolink" },
+  { href: "/services", label: "Serviços" },
+  { href: "/esg", label: "ESG" },
+  { href: "/results", label: "Resultados" },
+  { href: "/blog", label: "Blog" },
+];
+
+export function Header({ variant }: HeaderProps) {
+  const logoSrc = {
+    white: "/logo_biolink_white.png",
+    default: "/logo_biolink.png",
+  };
+
+  const currentLogo = variant === "white" ? logoSrc.white : logoSrc.default;
+  const mobileLogo = logoSrc.default;
+
   return (
-    <header className="absolute w-full px-16 top-0 left-0 right-0 z-50">
+    <header className={cn(headerVariants({ variant }))}>
       <div className="container max-w-7xl mx-auto flex h-24 items-center justify-between">
         <div className="flex items-center gap-16">
           <Link href="/" className="flex items-center gap-2">
             <div className="relative w-44 h-10">
               <Image
-                src="/logo_biolink_white.png"
-                alt="Logo"
+                src={currentLogo}
+                alt="Logo Biolink"
                 fill
                 className="object-contain"
               />
             </div>
           </Link>
-          <nav className="hidden md:flex md:flex-row items-center justify-start gap-8 text-white">
-            <Link href="/about" className="group relative py-2">
-              <span className="text-base font-semibold group-hover:text-white/80">
-                A Biolink
-              </span>
 
-              <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></div>
-            </Link>
-
-            <Link href="/services" className="group relative py-2">
-              <span className="text-base font-semibold group-hover:text-white/80">
-                Serviços
-              </span>
-
-              <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></div>
-            </Link>
-
-            <Link href="/esg" className="group relative py-2">
-              <span className="text-base font-semibold group-hover:text-white/80">
-                ESG
-              </span>
-
-              <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></div>
-            </Link>
-
-            <Link href="/results" className="group relative py-2">
-              <span className="text-base font-semibold group-hover:text-white/80">
-                Resultados
-              </span>
-
-              <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></div>
-            </Link>
-
-            <Link href="/news" className="group relative py-2">
-              <span className="text-base font-semibold group-hover:text-white/80">
-                Notícias
-              </span>
-
-              <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></div>
-            </Link>
+          <nav className="hidden md:flex md:flex-row items-center justify-start gap-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="group relative py-2"
+              >
+                <span className="text-base font-semibold group-hover:opacity-80 transition-opacity">
+                  {link.label}
+                </span>
+                <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></div>
+              </Link>
+            ))}
           </nav>
         </div>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-12">
-          <div className="flex items-center gap-2">
-            <Button
-              variant="default"
-              size="default"
-              className="bg-transparent text-white border-2 border-white hover:border-white/70 hover:text-white/70 hover:bg-transparent transition-all cursor-pointer"
+          <Link
+            href={"/login"}
+            className={cn(
+              "inline-flex h-8 items-center justify-center rounded-md px-4 shadow transition-colors",
+              {
+                "bg-primary hover:bg-primary/80": variant === "white",
+                "": variant === "default",
+              }
+            )}
+          >
+            <span
+              className={cn({
+                "text-sm font-semibold bg-[url('/ocean-background.jpg')] bg-fixed bg-clip-text text-transparent":
+                  variant === "white",
+                "text-sm font-semibold text-white":
+                  variant === "default",
+              })}
             >
-              Cadastre-se
-            </Button>
-            <Link
-              href={"/login"}
-              className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-[#3d3d3d] shadow transition-colors hover:bg-primary/90"
-            >
-              Entrar
-            </Link>
-          </div>
+              Acessar Painel
+            </span>
+          </Link>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="md:hidden flex items-center">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="h-9 w-9">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-9 w-9 hover:bg-white/10"
+              >
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
+                <span className="sr-only">Abrir menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetContent
+              side="right"
+              className="w-[300px] sm:w-[400px] bg-white text-[#3D3D3D]"
+            >
               <div className="flex flex-col h-full">
                 <div className="px-2 py-4">
                   <Link href="/" className="flex items-center gap-2 mb-8">
-                    <div className="relative w-8 h-8">
+                    <div className="relative w-32 h-8">
                       <Image
-                        src="/logo_biolink.png"
-                        alt="Logo"
+                        src={mobileLogo}
+                        alt="Logo Biolink"
                         fill
                         className="object-contain"
                       />
                     </div>
                   </Link>
 
-                  <nav className="flex flex-col space-y-4 mb-8">
-                    <Link
-                      href="/about"
-                      className="text-base font-medium hover:text-primary hover:bg-zinc-100 px-4 py-2 rounded-md transition-all duration-200"
-                    >
-                      A Biolink
-                    </Link>
-                    <Link
-                      href="/services"
-                      className="text-base font-medium hover:text-primary hover:bg-zinc-100 px-4 py-2 rounded-md transition-all duration-200"
-                    >
-                      Serviços
-                    </Link>
-                    <Link
-                      href="/esg"
-                      className="text-base font-medium hover:text-primary hover:bg-zinc-100 px-4 py-2 rounded-md transition-all duration-200"
-                    >
-                      ESG
-                    </Link>
-                    <Link
-                      href="/results"
-                      className="text-base font-medium hover:text-primary hover:bg-zinc-100 px-4 py-2 rounded-md transition-all duration-200"
-                    >
-                      Resultados
-                    </Link>
-                    <Link
-                      href="/news"
-                      className="text-base font-medium hover:text-primary hover:bg-zinc-100 px-4 py-2 rounded-md transition-all duration-200"
-                    >
-                      Notícias
-                    </Link>
+                  {/* --- Documentação (Navegação Mobile Dinâmica) --- */}
+                  <nav className="flex flex-col space-y-2 mb-8">
+                    {navLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="text-base font-medium hover:text-primary hover:bg-zinc-100 px-4 py-2 rounded-md transition-all duration-200"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
                   </nav>
                 </div>
 
                 <div className="mt-auto p-4 border-t">
                   <div className="flex flex-col gap-2 w-full">
-                    <Button variant="outline" className="w-full justify-center">
-                      Login
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="w-full justify-center"
+                    >
+                      <Link href="/login">Login</Link>
                     </Button>
-                    <Button className="w-full justify-center">Sign Up</Button>
+                    <Button asChild className="w-full justify-center">
+                      <Link href="/signup">Sign Up</Link>
+                    </Button>
                   </div>
                 </div>
               </div>

@@ -1,15 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Home() {
-  const router = useRouter();
-
-  const handleSignup = () => {
-    router.push("/signup");
-  };
-
   return (
     <main className="relative h-screen flex flex-col items-center overflow-hidden bg-[linear-gradient(to_top_right,rgba(61,61,61,0.5),transparent),url('/ocean-background.jpg')] bg-cover bg-center bg-no-repeat">
       <div className="absolute -top-[460px] -left-[680px] h-[1600px] w-[1600px] border-3 border-primary rounded-[120px] rotate-45 z-0"></div>
@@ -22,24 +15,23 @@ export default function Home() {
           </div>
 
           <h1 className="text-7xl text-white font-bold">
-            Incorporando <br /> Resíduos
+            Inteligência <br /> Ambiental
           </h1>
 
           <p className="text-lg font-medium text-white max-w-2xl">
-            Simplificamos o processo de coleta e reciclagem de óleo usado.
-            <br />
-            Sua empresa em dia, sem complicações e sem custos.
+            A Biolink traduz a complexidade do ESG em crescimento e valor para o
+            seu negócio. Transformamos obrigações ambientais em oportunidades
+            competitivas e lucrativas.
           </p>
 
-          <Button
-            onClick={handleSignup}
-            variant="outline"
+          <Link
+            href="/about"
             className="group h-12 w-64 flex items-center justify-center bg-transparent border border-white hover:border-white/70 hover:bg-transparent rounded-lg transition-all cursor-pointer"
           >
             <span className="text-lg text-white font-semibold group-hover:text-white/70 transition-all">
               Saiba Mais
             </span>
-          </Button>
+          </Link>
         </div>
         <div className="flex-1 h-full">
           <div className="absolute right-24 top-24 lg:right-48 lg:top-48">
@@ -50,9 +42,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
-        
-      </section>
+      <section></section>
     </main>
   );
 }

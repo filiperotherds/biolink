@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={GeistSans.className}>
-        <Header/>
+        <Header variant="white"/>
         {children}
       </body>
     </html>
